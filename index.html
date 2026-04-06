@@ -7,19 +7,13 @@
 
 <style>
 :root{
-  --black:#050507;
-  --dark:#0e0f14;
-  --line:#1c1f2a;
-  --line2:#2a2f3d;
+  --black:#000000;
+  --dark:#0a0a0a;
+  --line:#1a1a1a;
   --text:#ffffff;
-  --muted:#7a7f8c;
-  --accent:#00ff9d;
-  --radius:14px;
+  --muted:#888;
+  --gold:#D4AF37;
 }
-
-*{box-sizing:border-box}
-
-html{scroll-behavior:smooth}
 
 body{
   margin:0;
@@ -30,11 +24,174 @@ body{
 
 .container{
   max-width:1100px;
-  margin:0 auto;
+  margin:auto;
   padding:40px 20px 80px;
   text-align:center;
 }
 
+.logo{
+  width:180px;
+  margin-bottom:20px;
+}
+
+.brand-title{
+  font-size:46px;
+  letter-spacing:6px;
+  font-weight:900;
+}
+
+.brand-sub{
+  font-size:14px;
+  letter-spacing:6px;
+  color:var(--muted);
+  margin-top:8px;
+}
+
+.tagline{
+  margin-top:10px;
+  color:var(--gold);
+  letter-spacing:3px;
+  font-size:13px;
+}
+
+.divider{
+  height:1px;
+  background:var(--line);
+  margin:40px 0;
+}
+
+.section-label{
+  font-size:11px;
+  letter-spacing:4px;
+  color:var(--muted);
+}
+
+.section-title{
+  font-size:26px;
+  margin-top:10px;
+}
+
+.button{
+  display:inline-block;
+  margin-top:20px;
+  padding:14px 28px;
+  border:1px solid var(--gold);
+  border-radius:10px;
+  color:var(--gold);
+  text-decoration:none;
+  font-weight:700;
+  transition:0.2s;
+}
+
+.button:hover{
+  background:var(--gold);
+  color:#000;
+  box-shadow:0 0 20px rgba(212,175,55,0.4);
+}
+
+.menu{
+  margin-top:30px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  overflow:hidden;
+}
+
+.row{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  padding:14px;
+  border-bottom:1px solid var(--line);
+}
+
+.row.header{
+  background:#050505;
+  color:var(--muted);
+  font-size:12px;
+  letter-spacing:2px;
+}
+
+.row:last-child{
+  border-bottom:none;
+}
+
+.footer{
+  margin-top:60px;
+  font-size:12px;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<img src="logo.png" class="logo" alt="Reforge Logo" />
+
+<div class="brand-title">REFORGE</div>
+<div class="brand-sub">PEPTIDES</div>
+<div class="tagline">REBUILD • ENHANCE • EVOLVE</div>
+
+<div class="divider"></div>
+
+<div class="section-label">END OF MONTH SPECIAL</div>
+<div class="section-title">CONTACT FOR CURRENT DETAILS</div>
+
+<a class="button"
+href="https://wa.me/13102187321?text=Hi%20Reforge%20I%20want%20the%20current%20specials"
+target="_blank">
+REQUEST SPECIAL
+</a>
+
+<div class="divider"></div>
+
+<div class="section-label">PRICE LIST</div>
+<div class="section-title">CONTACT FOR CURRENT PRICING</div>
+
+<a class="button"
+href="https://wa.me/13102187321?text=Hi%20Reforge%20send%20price%20list"
+target="_blank">
+REQUEST PRICE LIST
+</a>
+
+<div class="divider"></div>
+
+<div class="section-label">MENU</div>
+<div class="section-title">CURRENT PRODUCT MENU</div>
+
+<div class="menu">
+  <div class="row header">
+    <div>Product</div>
+    <div>Size</div>
+    <div>Price</div>
+  </div>
+
+  <div class="row"><div>Tirzepatide</div><div>10mg</div><div>$60</div></div>
+  <div class="row"><div>Tirzepatide</div><div>20mg</div><div>$120</div></div>
+  <div class="row"><div>Tirzepatide</div><div>30mg</div><div>$175</div></div>
+  <div class="row"><div>Retatrutide</div><div>10mg</div><div>$100</div></div>
+  <div class="row"><div>Retatrutide</div><div>30mg</div><div>$220</div></div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section-label">CONTACT</div>
+<div class="section-title">WHATSAPP ONLY</div>
+
+<a class="button"
+href="https://wa.me/13102187321"
+target="_blank">
+OPEN WHATSAPP
+</a>
+
+<div class="footer">
+© 2026 REFORGE PEPTIDES
+</div>
+
+</div>
+
+</body>
+</html>
 .logo{
   width:220px;
   max-width:80%;
