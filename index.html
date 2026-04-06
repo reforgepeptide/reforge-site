@@ -32,19 +32,10 @@
       background:
         radial-gradient(circle at top, rgba(212,175,55,.08), transparent 30%),
         linear-gradient(180deg, #040404 0%, #070707 100%);
-      min-height:100vh;
-      display:flex;
-      flex-direction:column;
     }
 
     a{color:inherit;text-decoration:none}
     img{display:block;max-width:100%}
-
-    #homePage{
-      flex:1;
-      display:flex;
-      flex-direction:column;
-    }
 
     .container{
       width:min(var(--max), calc(100% - 32px));
@@ -181,6 +172,15 @@
       padding:42px;
     }
 
+    .eyebrow{
+      color:var(--muted);
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      margin-bottom:14px;
+    }
+
     h1{
       margin:0;
       color:#f5e2a4;
@@ -204,6 +204,14 @@
       font-size:14px;
       letter-spacing:3px;
       text-transform:uppercase;
+    }
+
+    .hero-copy{
+      max-width:620px;
+      margin-top:20px;
+      color:#c3b48d;
+      line-height:1.7;
+      font-size:15px;
     }
 
     .hero-actions{
@@ -259,6 +267,64 @@
       color:#f2df9f;
       font-size:clamp(28px, 3vw, 42px);
       line-height:1.05;
+      text-transform:uppercase;
+    }
+
+    .section-copy{
+      max-width:680px;
+      color:#b8ab88;
+      line-height:1.65;
+      font-size:15px;
+    }
+
+    .special-banner{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:18px;
+      align-items:center;
+      padding:24px;
+      border:1px solid var(--line);
+      border-radius:26px;
+      background:
+        linear-gradient(135deg, rgba(212,175,55,.08), rgba(212,175,55,.02)),
+        linear-gradient(180deg, #111114, #0a0a0c);
+      box-shadow:var(--shadow);
+    }
+
+    .special-title{
+      margin:0 0 8px;
+      color:#f2df9f;
+      font-size:28px;
+      line-height:1.05;
+      text-transform:uppercase;
+    }
+
+    .special-copy{
+      color:#b8ab88;
+      line-height:1.65;
+      font-size:15px;
+    }
+
+    .special-panel{
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.24);
+      border-radius:18px;
+      padding:20px;
+    }
+
+    .special-mini{
+      color:var(--muted);
+      font-size:11px;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      margin-bottom:8px;
+    }
+
+    .special-big{
+      color:#f2df9f;
+      font-size:18px;
+      font-weight:900;
+      line-height:1.35;
       text-transform:uppercase;
     }
 
@@ -327,6 +393,13 @@
       white-space:nowrap;
     }
 
+    .product-copy{
+      color:#b8ab88;
+      line-height:1.65;
+      font-size:14px;
+      min-height:68px;
+    }
+
     .product-footer{
       margin-top:18px;
       display:flex;
@@ -388,13 +461,12 @@
     }
 
     .footer{
-      padding:30px 0 20px;
+      padding:34px 0 48px;
       text-align:center;
       color:#8f8468;
       font-size:12px;
       letter-spacing:2px;
       text-transform:uppercase;
-      margin-top:auto;
     }
 
     .order-section{
@@ -539,6 +611,7 @@
 
     @media (max-width: 980px){
       .hero-grid,
+      .special-banner,
       .contact-grid,
       .order-layout{
         grid-template-columns:1fr;
@@ -597,11 +670,13 @@
       </div>
 
       <nav class="nav">
-        <a href="#catalog">Menu</a>
+        <a href="#specials">Specials</a>
+        <a href="#catalog">Catalog</a>
         <a href="#contact">Contact</a>
       </nav>
 
       <div class="cta-row">
+        <a class="btn" href="https://wa.me/13102187321?text=Hi%20Reforge%2C%20can%20you%20send%20the%20current%20price%20list%3F" target="_blank">Price List</a>
         <button class="btn gold" onclick="showOrderPage()">Start Order</button>
       </div>
     </div>
@@ -613,12 +688,16 @@
         <div class="hero-shell">
           <div class="hero-grid">
             <div>
+              <div class="eyebrow">Premium Brand Presentation</div>
               <h1>Reforge</h1>
               <div class="subbrand">Peptides</div>
               <div class="tagline">Rebuild • Enhance • Evolve</div>
+              <p class="hero-copy">
+                Clean luxury layout, direct contact, and a premium black-and-gold brand identity built for a stronger first impression.
+              </p>
               <div class="hero-actions">
+                <a class="btn gold" href="https://wa.me/13102187321?text=Hi%20Reforge%2C%20what%20are%20the%20current%20specials%3F" target="_blank">Request Special</a>
                 <a class="btn" href="https://wa.me/13102187321" target="_blank">Open WhatsApp</a>
-                <button class="btn gold" onclick="showOrderPage()">Start Order</button>
               </div>
             </div>
 
@@ -630,14 +709,37 @@
       </div>
     </section>
 
+    <section class="section" id="specials">
+      <div class="container">
+        <div class="special-banner">
+          <div>
+            <div class="section-label">Current Special</div>
+            <h2 class="special-title">Contact for current details</h2>
+            <div class="special-copy">
+              Reach out directly for current availability, specials, and pricing.
+            </div>
+          </div>
+
+          <div class="special-panel">
+            <div class="special-mini">Direct Access</div>
+            <div class="special-big">Private WhatsApp contact for current information</div>
+            <div style="margin-top:16px">
+              <a class="btn gold" href="https://wa.me/13102187321?text=Hi%20Reforge%2C%20what%20are%20the%20current%20specials%3F" target="_blank">Request Special</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="catalog">
       <div class="container">
         <div class="section-head">
           <div>
-            <div class="section-label">Current Product Menu</div>
-            <h2 class="section-title">Elite pricing</h2>
+            <div class="section-label">Current Product Catalog</div>
+            <h2 class="section-title">Luxury catalog</h2>
           </div>
           <div class="cta-row">
+            <a class="btn" href="https://wa.me/13102187321?text=Hi%20Reforge%2C%20can%20you%20send%20the%20current%20price%20list%3F" target="_blank">Request Price List</a>
             <button class="btn gold" onclick="showOrderPage()">Start Order</button>
           </div>
         </div>
@@ -778,13 +880,13 @@
 
   <script>
     const products = [
-      { name: "Retatrutide", size: "10mg", price: 100 },
-      { name: "Retatrutide", size: "30mg", price: 220 },
-      { name: "Tirzepatide", size: "10mg", price: 60 },
-      { name: "Tirzepatide", size: "20mg", price: 120 },
-      { name: "Tirzepatide", size: "30mg", price: 175 },
-      { name: "BPC-157", size: "10mg", price: 50 },
-      { name: "TB500", size: "10mg", price: 100 }
+      { name: "Retatrutide", size: "10mg", price: 100, desc: "Premium catalog presentation for current 10mg offering." },
+      { name: "Retatrutide", size: "30mg", price: 220, desc: "High-end listing for current 30mg offering." },
+      { name: "Tirzepatide", size: "10mg", price: 60, desc: "Current 10mg option presented in the premium catalog." },
+      { name: "Tirzepatide", size: "20mg", price: 120, desc: "Current 20mg option with clean luxury styling." },
+      { name: "Tirzepatide", size: "30mg", price: 175, desc: "Current 30mg option in the black-and-gold lineup." },
+      { name: "BPC-157", size: "10mg", price: 50, desc: "Current BPC-157 option with the same premium presentation." },
+      { name: "TB500", size: "10mg", price: 100, desc: "TB500 10mg listing updated to current pricing." }
     ];
 
     const SHIPPING_COST = 15;
@@ -822,9 +924,10 @@
             </div>
             <div class="product-price">${money(p.price)}</div>
           </div>
+          <div class="product-copy">${p.desc}</div>
           <div class="product-footer">
-            <div class="badge">Elite Menu</div>
-            <div class="badge">Current Pricing</div>
+            <div class="badge">Current Menu</div>
+            <div class="badge">Premium Access</div>
           </div>
         `;
         wrap.appendChild(card);
@@ -936,923 +1039,3 @@ Total: ${money(data.total)}
       if(referralName){
         message += `
 Referred By: ${referralName}
-Referral Credit Note: ${referralName} receives a $30 credit after the referral completes a purchase.
-`;
-      }
-
-      if(notes){
-        message += `
-Notes: ${notes}
-`;
-      }
-
-      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-      window.open(url, "_blank");
-    }
-
-    document.getElementById("year").textContent = new Date().getFullYear();
-    document.getElementById("year2").textContent = new Date().getFullYear();
-
-    buildCatalog();
-    buildOrderRows();
-    updateSummary();
-  </script>
-</body>
-</html>      width:min(var(--max), calc(100% - 32px));
-      margin:0 auto;
-      min-height:78px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
-    }
-
-    .brand-lockup{
-      display:flex;
-      align-items:center;
-      gap:14px;
-    }
-
-    .brand-lockup img{
-      width:54px;
-      height:54px;
-      object-fit:contain;
-    }
-
-    .brand-mini{
-      color:var(--muted);
-      font-size:10px;
-      letter-spacing:3px;
-      text-transform:uppercase;
-      margin-bottom:6px;
-    }
-
-    .brand-name{
-      color:#f2df9f;
-      font-size:28px;
-      font-weight:900;
-      letter-spacing:4px;
-      text-transform:uppercase;
-      line-height:1;
-    }
-
-    .nav{
-      display:flex;
-      gap:18px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
-
-    .nav a{
-      color:#d6c793;
-      font-size:12px;
-      letter-spacing:2px;
-      text-transform:uppercase;
-    }
-
-    .nav a:hover{
-      color:#fff0bb;
-    }
-
-    .cta-row{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:48px;
-      padding:0 20px;
-      border-radius:14px;
-      border:1px solid rgba(212,175,55,.45);
-      background:linear-gradient(180deg, rgba(212,175,55,.08), rgba(212,175,55,.03));
-      color:#f1db8c;
-      font-size:13px;
-      font-weight:800;
-      letter-spacing:1.6px;
-      text-transform:uppercase;
-      cursor:pointer;
-      transition:.2s ease;
-    }
-
-    .btn:hover{
-      transform:translateY(-1px);
-      border-color:rgba(212,175,55,.8);
-      color:#fff0bb;
-      box-shadow:0 10px 30px rgba(0,0,0,.35);
-    }
-
-    .btn.gold{
-      color:#0b0b0d;
-      border-color:#dab84d;
-      background:linear-gradient(180deg, #f5dd82, #d4af37 55%, #b98d1b);
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.35);
-    }
-
-    .btn.gold:hover{
-      filter:brightness(1.04);
-    }
-
-    .hero{
-      padding:42px 0 22px;
-    }
-
-    .hero-shell{
-      border:1px solid var(--line);
-      border-radius:30px;
-      background:
-        radial-gradient(circle at 15% 0%, rgba(212,175,55,.08), transparent 35%),
-        linear-gradient(180deg, rgba(18,18,22,.98), rgba(10,10,12,.98));
-      box-shadow:var(--shadow);
-      overflow:hidden;
-    }
-
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:24px;
-      align-items:center;
-      padding:42px;
-    }
-
-    h1{
-      margin:0;
-      color:#f5e2a4;
-      font-size:clamp(42px, 7vw, 82px);
-      line-height:.95;
-      letter-spacing:4px;
-      text-transform:uppercase;
-    }
-
-    .subbrand{
-      margin-top:10px;
-      color:#c4af73;
-      font-size:16px;
-      letter-spacing:12px;
-      text-transform:uppercase;
-    }
-
-    .tagline{
-      margin-top:18px;
-      color:#d6c7a0;
-      font-size:14px;
-      letter-spacing:3px;
-      text-transform:uppercase;
-    }
-
-    .hero-actions{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-      margin-top:28px;
-    }
-
-    .hero-card{
-      background:
-        linear-gradient(180deg, rgba(212,175,55,.06), rgba(255,255,255,.01)),
-        linear-gradient(180deg, #101014, #09090b);
-      border:1px solid var(--line);
-      border-radius:28px;
-      padding:24px;
-      min-height:100%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-
-    .hero-card img{
-      width:min(100%, 430px);
-      height:auto;
-      object-fit:contain;
-    }
-
-    .section{
-      padding:22px 0;
-    }
-
-    .section-head{
-      display:flex;
-      align-items:end;
-      justify-content:space-between;
-      gap:18px;
-      margin-bottom:18px;
-      flex-wrap:wrap;
-    }
-
-    .section-label{
-      color:var(--muted);
-      font-size:11px;
-      font-weight:800;
-      letter-spacing:4px;
-      text-transform:uppercase;
-      margin-bottom:8px;
-    }
-
-    .section-title{
-      margin:0;
-      color:#f2df9f;
-      font-size:clamp(28px, 3vw, 42px);
-      line-height:1.05;
-      text-transform:uppercase;
-    }
-
-    .catalog-grid{
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0, 1fr));
-      gap:18px;
-    }
-
-    .product-card,
-    .contact-card,
-    .order-card,
-    .summary-card{
-      background:linear-gradient(180deg, rgba(15,15,18,.98), rgba(10,10,12,.98));
-      border:1px solid var(--line);
-      border-radius:24px;
-      box-shadow:var(--shadow);
-    }
-
-    .product-card{
-      padding:22px;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .product-card::before{
-      content:"";
-      position:absolute;
-      top:-70px;
-      right:-70px;
-      width:160px;
-      height:160px;
-      background:radial-gradient(circle, rgba(212,175,55,.13), transparent 68%);
-      pointer-events:none;
-    }
-
-    .product-top{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:12px;
-      margin-bottom:18px;
-    }
-
-    .product-name{
-      color:#f2df9f;
-      font-size:22px;
-      font-weight:900;
-      line-height:1.05;
-      text-transform:uppercase;
-    }
-
-    .product-size{
-      margin-top:8px;
-      color:var(--muted);
-      font-size:12px;
-      letter-spacing:2px;
-      text-transform:uppercase;
-    }
-
-    .product-price{
-      color:#f4dd82;
-      font-size:28px;
-      font-weight:900;
-      line-height:1;
-      white-space:nowrap;
-    }
-
-    .product-footer{
-      margin-top:18px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      min-height:34px;
-      padding:0 12px;
-      border-radius:999px;
-      border:1px solid rgba(212,175,55,.18);
-      color:#d7c793;
-      font-size:11px;
-      font-weight:800;
-      letter-spacing:1.5px;
-      text-transform:uppercase;
-      background:rgba(212,175,55,.04);
-    }
-
-    .contact-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:18px;
-    }
-
-    .contact-card{
-      padding:24px;
-    }
-
-    .contact-title{
-      margin:0 0 8px;
-      color:#f2df9f;
-      font-size:22px;
-      text-transform:uppercase;
-    }
-
-    .contact-text{
-      margin:0 0 18px;
-      color:#b8ab88;
-      line-height:1.7;
-      font-size:14px;
-    }
-
-    .contact-number{
-      margin:10px 0 16px;
-      color:#fff0bb;
-      font-size:26px;
-      font-weight:900;
-      letter-spacing:1px;
-    }
-
-    .footer-line{
-      height:1px;
-      margin-top:18px;
-      background:linear-gradient(90deg, transparent, rgba(212,175,55,.5), transparent);
-    }
-
-    .footer{
-      padding:30px 0 20px;
-      text-align:center;
-      color:#8f8468;
-      font-size:12px;
-      letter-spacing:2px;
-      text-transform:uppercase;
-      margin-top:auto;
-    }
-
-    .order-section{
-      display:none;
-      padding-bottom:42px;
-    }
-
-    .order-section.active{
-      display:block;
-    }
-
-    .order-layout{
-      display:grid;
-      grid-template-columns:1.2fr .8fr;
-      gap:20px;
-      align-items:start;
-    }
-
-    .order-card,
-    .summary-card{
-      padding:22px;
-    }
-
-    .card-title{
-      margin:0 0 8px;
-      color:#f2df9f;
-      font-size:24px;
-      text-transform:uppercase;
-    }
-
-    .card-copy{
-      margin:0 0 18px;
-      color:#b8ab88;
-      line-height:1.6;
-      font-size:14px;
-    }
-
-    .order-table{
-      border:1px solid var(--line);
-      border-radius:18px;
-      overflow:hidden;
-    }
-
-    .order-head,
-    .order-row{
-      display:grid;
-      grid-template-columns:1.35fr .7fr .7fr .7fr .9fr;
-      gap:12px;
-      align-items:center;
-      padding:14px 16px;
-    }
-
-    .order-head{
-      background:#111115;
-      color:#baa866;
-      font-size:11px;
-      font-weight:800;
-      letter-spacing:3px;
-      text-transform:uppercase;
-      border-bottom:1px solid var(--line);
-    }
-
-    .order-row{
-      border-bottom:1px solid var(--line-soft);
-      font-size:14px;
-      color:#efe5cc;
-    }
-
-    .order-row:last-child{
-      border-bottom:none;
-    }
-
-    .field{
-      margin-bottom:14px;
-    }
-
-    .field label{
-      display:block;
-      margin-bottom:8px;
-      color:#baa866;
-      font-size:11px;
-      font-weight:800;
-      letter-spacing:2.5px;
-      text-transform:uppercase;
-    }
-
-    input, textarea, select{
-      width:100%;
-      border:1px solid var(--line);
-      background:#0b0b0d;
-      color:#f2ead2;
-      border-radius:14px;
-      padding:13px 14px;
-      font-size:14px;
-      outline:none;
-    }
-
-    textarea{
-      min-height:92px;
-      resize:vertical;
-    }
-
-    input:focus, textarea:focus, select:focus{
-      border-color:rgba(212,175,55,.45);
-      box-shadow:0 0 0 3px rgba(212,175,55,.08);
-    }
-
-    .summary-line{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding:12px 0;
-      border-bottom:1px solid var(--line-soft);
-      color:#d3c6a0;
-      font-size:14px;
-    }
-
-    .summary-line:last-child{
-      border-bottom:none;
-    }
-
-    .summary-total{
-      color:#f4dd82;
-      font-size:22px;
-      font-weight:900;
-      text-transform:uppercase;
-    }
-
-    .note{
-      margin-top:14px;
-      color:#8f8469;
-      line-height:1.6;
-      font-size:12px;
-    }
-
-    @media (max-width: 1100px){
-      .catalog-grid{
-        grid-template-columns:repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 980px){
-      .hero-grid,
-      .contact-grid,
-      .order-layout{
-        grid-template-columns:1fr;
-      }
-
-      .nav{
-        display:none;
-      }
-    }
-
-    @media (max-width: 720px){
-      .topbar-inner{
-        min-height:70px;
-      }
-
-      .brand-name{
-        font-size:22px;
-      }
-
-      .hero-grid{
-        padding:24px;
-      }
-
-      .subbrand{
-        font-size:13px;
-        letter-spacing:8px;
-      }
-
-      .catalog-grid{
-        grid-template-columns:1fr;
-      }
-
-      .order-head,
-      .order-row{
-        grid-template-columns:1.2fr .7fr .7fr .7fr .9fr;
-        padding:12px 10px;
-        font-size:12px;
-      }
-
-      .btn{
-        width:100%;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <header class="topbar">
-    <div class="topbar-inner">
-      <div class="brand-lockup">
-        <img src="logo.png" alt="Reforge logo" onerror="this.onerror=null;this.src='logo.jpg';" />
-        <div>
-          <div class="brand-mini">Rebuild • Enhance • Evolve</div>
-          <div class="brand-name">Reforge</div>
-        </div>
-      </div>
-
-      <nav class="nav">
-        <a href="#catalog">Menu</a>
-        <a href="#contact">Contact</a>
-      </nav>
-
-      <div class="cta-row">
-        <button class="btn gold" onclick="showOrderPage()">Start Order</button>
-      </div>
-    </div>
-  </header>
-
-  <main id="homePage">
-    <section class="hero">
-      <div class="container">
-        <div class="hero-shell">
-          <div class="hero-grid">
-            <div>
-              <h1>Reforge</h1>
-              <div class="subbrand">Peptides</div>
-              <div class="tagline">Rebuild • Enhance • Evolve</div>
-              <div class="hero-actions">
-                <a class="btn" href="https://wa.me/13102187321" target="_blank">Open WhatsApp</a>
-                <button class="btn gold" onclick="showOrderPage()">Start Order</button>
-              </div>
-            </div>
-
-            <div class="hero-card">
-              <img src="logo.png" alt="Reforge brand logo" onerror="this.onerror=null;this.src='logo.jpg';" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="catalog">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="section-label">Current Product Menu</div>
-            <h2 class="section-title">Elite pricing</h2>
-          </div>
-          <div class="cta-row">
-            <button class="btn gold" onclick="showOrderPage()">Start Order</button>
-          </div>
-        </div>
-
-        <div class="catalog-grid" id="catalogGrid"></div>
-      </div>
-    </section>
-
-    <section class="section" id="contact">
-      <div class="container">
-        <div class="contact-grid">
-          <div class="contact-card">
-            <div class="section-label">Contact</div>
-            <h3 class="contact-title">WhatsApp only</h3>
-            <p class="contact-text">
-              Direct line for questions, pricing, and order communication.
-            </p>
-            <div class="contact-number">310-218-7321</div>
-            <a class="btn gold" href="https://wa.me/13102187321" target="_blank">Open WhatsApp</a>
-          </div>
-
-          <div class="contact-card">
-            <div class="section-label">Referral Program</div>
-            <h3 class="contact-title">$30 credit per completed referral</h3>
-            <p class="contact-text">
-              When a referred customer completes a purchase, the referrer receives a $30 credit toward a future order.
-            </p>
-            <button class="btn gold" onclick="showOrderPage()">Start Order</button>
-          </div>
-        </div>
-
-        <div class="footer-line"></div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      © <span id="year"></span> Reforge Peptides
-    </footer>
-  </main>
-
-  <section class="order-section" id="orderPage">
-    <div class="container" style="padding-top:28px;">
-      <div class="section-head">
-        <div>
-          <div class="section-label">Order Portal</div>
-          <h2 class="section-title">Build order</h2>
-        </div>
-        <div class="cta-row">
-          <button class="btn" onclick="showHomePage()">Back To Home</button>
-        </div>
-      </div>
-
-      <div class="order-layout">
-        <div class="order-card">
-          <h3 class="card-title">Select quantities</h3>
-          <p class="card-copy">Choose the items below. Your order summary updates automatically.</p>
-
-          <div class="order-table">
-            <div class="order-head">
-              <div>Product</div>
-              <div>Size</div>
-              <div>Price</div>
-              <div>Qty</div>
-              <div>Line Total</div>
-            </div>
-            <div id="orderRows"></div>
-          </div>
-        </div>
-
-        <div class="summary-card">
-          <h3 class="card-title">Checkout</h3>
-          <p class="card-copy">Fill out the fields and send the finished order to WhatsApp.</p>
-
-          <div class="field">
-            <label for="customerName">Customer Name</label>
-            <input id="customerName" type="text" placeholder="Full name" />
-          </div>
-
-          <div class="field">
-            <label for="shippingAddress">Shipping Address</label>
-            <textarea id="shippingAddress" placeholder="Street address, city, state, ZIP"></textarea>
-          </div>
-
-          <div class="field">
-            <label for="referralName">Referral Name</label>
-            <input id="referralName" type="text" placeholder="If applicable" />
-          </div>
-
-          <div class="field">
-            <label for="firstTimeCustomer">First Time Customer</label>
-            <select id="firstTimeCustomer" onchange="updateSummary()">
-              <option value="no">No</option>
-              <option value="yes">Yes — 20% off products</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="notes">Notes</label>
-            <textarea id="notes" placeholder="Special instructions"></textarea>
-          </div>
-
-          <div class="summary-line">
-            <span>Product Subtotal</span>
-            <span id="productSubtotal">$0.00</span>
-          </div>
-
-          <div class="summary-line">
-            <span>First-Time Discount</span>
-            <span id="discountAmount">-$0.00</span>
-          </div>
-
-          <div class="summary-line">
-            <span>Shipping</span>
-            <span id="shippingAmount">$15.00</span>
-          </div>
-
-          <div class="summary-line summary-total">
-            <span>Total</span>
-            <span id="orderTotal">$15.00</span>
-          </div>
-
-          <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:18px;">
-            <button class="btn gold" onclick="sendOrder()">Complete Order</button>
-            <button class="btn" onclick="showHomePage()">Back To Home</button>
-          </div>
-
-          <div class="note">
-            Referral program: each referral that completes a purchase earns a $30 credit for the referrer.
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <footer class="footer">
-      © <span id="year2"></span> Reforge Peptides
-    </footer>
-  </section>
-
-  <script>
-    const products = [
-      { name: "Retatrutide", size: "10mg", price: 100 },
-      { name: "Retatrutide", size: "30mg", price: 220 },
-      { name: "Tirzepatide", size: "10mg", price: 60 },
-      { name: "Tirzepatide", size: "20mg", price: 120 },
-      { name: "Tirzepatide", size: "30mg", price: 175 },
-      { name: "BPC-157", size: "10mg", price: 50 },
-      { name: "TB500", size: "10mg", price: 100 }
-    ];
-
-    const SHIPPING_COST = 15;
-    const FIRST_TIME_DISCOUNT = 0.20;
-    const WHATSAPP_NUMBER = "13102187321";
-
-    function money(num){
-      return "$" + Number(num).toFixed(2);
-    }
-
-    function showOrderPage(){
-      document.getElementById("homePage").style.display = "none";
-      document.getElementById("orderPage").classList.add("active");
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    function showHomePage(){
-      document.getElementById("orderPage").classList.remove("active");
-      document.getElementById("homePage").style.display = "block";
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    function buildCatalog(){
-      const wrap = document.getElementById("catalogGrid");
-      wrap.innerHTML = "";
-
-      products.forEach(p => {
-        const card = document.createElement("div");
-        card.className = "product-card";
-        card.innerHTML = `
-          <div class="product-top">
-            <div>
-              <div class="product-name">${p.name}</div>
-              <div class="product-size">${p.size}</div>
-            </div>
-            <div class="product-price">${money(p.price)}</div>
-          </div>
-          <div class="product-footer">
-            <div class="badge">Elite Menu</div>
-            <div class="badge">Current Pricing</div>
-          </div>
-        `;
-        wrap.appendChild(card);
-      });
-    }
-
-    function buildOrderRows(){
-      const wrap = document.getElementById("orderRows");
-      wrap.innerHTML = "";
-
-      products.forEach((p, i) => {
-        const row = document.createElement("div");
-        row.className = "order-row";
-        row.innerHTML = `
-          <div>${p.name}</div>
-          <div>${p.size}</div>
-          <div>${money(p.price)}</div>
-          <div>
-            <select id="qty-${i}" onchange="updateSummary()">
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="10">10</option>
-            </select>
-          </div>
-          <div id="line-${i}">$0.00</div>
-        `;
-        wrap.appendChild(row);
-      });
-    }
-
-    function getOrderData(){
-      let subtotal = 0;
-      let items = [];
-
-      products.forEach((p, i) => {
-        const qty = Number(document.getElementById(`qty-${i}`).value || 0);
-        const line = qty * p.price;
-        document.getElementById(`line-${i}`).textContent = money(line);
-
-        if(qty > 0){
-          subtotal += line;
-          items.push({
-            name: p.name,
-            size: p.size,
-            qty: qty,
-            lineTotal: line
-          });
-        }
-      });
-
-      const firstTime = document.getElementById("firstTimeCustomer").value === "yes";
-      const discount = firstTime ? subtotal * FIRST_TIME_DISCOUNT : 0;
-      const total = subtotal - discount + SHIPPING_COST;
-
-      return { items, subtotal, firstTime, discount, total };
-    }
-
-    function updateSummary(){
-      const data = getOrderData();
-      document.getElementById("productSubtotal").textContent = money(data.subtotal);
-      document.getElementById("discountAmount").textContent = "-" + money(data.discount);
-      document.getElementById("shippingAmount").textContent = money(SHIPPING_COST);
-      document.getElementById("orderTotal").textContent = money(data.total);
-    }
-
-    function sendOrder(){
-      const customerName = document.getElementById("customerName").value.trim();
-      const shippingAddress = document.getElementById("shippingAddress").value.trim();
-      const referralName = document.getElementById("referralName").value.trim();
-      const notes = document.getElementById("notes").value.trim();
-      const data = getOrderData();
-
-      if(!customerName){
-        alert("Please enter customer name.");
-        return;
-      }
-
-      if(!shippingAddress){
-        alert("Please enter shipping address.");
-        return;
-      }
-
-      if(data.items.length === 0){
-        alert("Please select at least one product.");
-        return;
-      }
-
-      let message = `REFORGE ORDER
-
-Customer Name: ${customerName}
-
-Shipping Address:
-${shippingAddress}
-
-Items:
-${data.items.map(item => `- ${item.name} ${item.size} x${item.qty} = ${money(item.lineTotal)}`).join("\\n")}
-
-Product Subtotal: ${money(data.subtotal)}
-First-Time Customer: ${data.firstTime ? "Yes" : "No"}
-First-Time Discount: -${money(data.discount)}
-Shipping: ${money(SHIPPING_COST)}
-Total: ${money(data.total)}
-`;
-
-      if(referralName){
-        message += `
-Referred By: ${referralName}
-Referral Credit Note: ${referralName} receives a $30 credit after the referral completes a purchase.
-`;
-      }
-
-      if(notes){
-        message += `
-Notes: ${notes}
-`;
-      }
-
-      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-      window.open(url, "_blank");
-    }
-
-    document.getElementById("year").textContent = new Date().getFullYear();
-    document.getElementById("year2").textContent = new Date().getFullYear();
-
-    buildCatalog();
-    buildOrderRows();
-    updateSummary();
-  </script>
-</body>
-</html>
