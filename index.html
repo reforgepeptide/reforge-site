@@ -799,7 +799,6 @@
     ];
 
     const SHIPPING_COST = 15;
-    const FIRST_TIME_DISCOUNT = 0.20;
     const WHATSAPP_NUMBER = "13102187321";
 
     function money(num){
@@ -890,17 +889,14 @@
         }
       });
 
-      const firstTime = document.getElementById("firstTimeCustomer").value === "yes";
-      const discount = firstTime ? subtotal * FIRST_TIME_DISCOUNT : 0;
-      const total = subtotal - discount + SHIPPING_COST;
+const total = subtotal + SHIPPING_COST;
 
-      return { items, subtotal, firstTime, discount, total };
+return { items, subtotal, total };
     }
 
     function updateSummary(){
       const data = getOrderData();
       document.getElementById("productSubtotal").textContent = money(data.subtotal);
-      document.getElementById("discountAmount").textContent = "-" + money(data.discount);
       document.getElementById("shippingAmount").textContent = money(SHIPPING_COST);
       document.getElementById("orderTotal").textContent = money(data.total);
     }
@@ -938,8 +934,6 @@ Items:
 ${data.items.map(item => `- ${item.name} ${item.size} x${item.qty} = ${money(item.lineTotal)}`).join("\\n")}
 
 Product Subtotal: ${money(data.subtotal)}
-First-Time Customer: ${data.firstTime ? "Yes" : "No"}
-First-Time Discount: -${money(data.discount)}
 Shipping: ${money(SHIPPING_COST)}
 Total: ${money(data.total)}
 `;
