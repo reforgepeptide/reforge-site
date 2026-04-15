@@ -3,89 +3,806 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>REFORGE PEPTIDES</title>
-  <meta name="description" content="Reforge Peptides" />
+  <title>REFORGE</title>
+  <meta name="description" content="Reforge luxury brand site" />
 
   <style>
     :root{
-      --bg:#050505;
-      --panel:#0d0d10;
-      --panel-2:#121216;
-      --line:rgba(212,175,55,.14);
-      --line-soft:rgba(255,255,255,.05);
-      --text:#f5f1e6;
-      --muted:#a89870;
-      --gold:#d4af37;
-      --gold-2:#b88f1c;
-      --radius:20px;
-      --shadow:0 18px 40px rgba(0,0,0,.45);
-      --max:1180px;
+      --bg:#f3f7ff;
+      --bg2:#edf3ff;
+      --white:#ffffff;
+      --text:#142033;
+      --text-soft:#5f7088;
+      --line:rgba(27,46,84,.08);
+
+      --blue:#4f7cff;
+      --cyan:#45d0ff;
+      --violet:#7a5cff;
+      --pink:#ff6fb5;
+      --orange:#ffad66;
+      --teal:#39d5bf;
+
+      --grad-main:linear-gradient(135deg,#4f7cff 0%,#7a5cff 34%,#ff6fb5 70%,#ffad66 100%);
+      --grad-cool:linear-gradient(135deg,rgba(79,124,255,.18),rgba(69,208,255,.14),rgba(122,92,255,.12));
+      --grad-warm:linear-gradient(135deg,rgba(255,111,181,.16),rgba(255,173,102,.12),rgba(255,255,255,.74));
+      --glass:rgba(255,255,255,.58);
+      --glass-strong:rgba(255,255,255,.72);
+
+      --shadow-xl:0 30px 80px rgba(43,72,132,.16);
+      --shadow-lg:0 18px 44px rgba(43,72,132,.12);
+      --shadow-md:0 12px 28px rgba(43,72,132,.10);
+
+      --radius-xl:40px;
+      --radius-lg:28px;
+      --radius-md:20px;
+
+      --max:1220px;
     }
 
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-
     body{
       margin:0;
       font-family:Arial, Helvetica, sans-serif;
       color:var(--text);
       background:
-        radial-gradient(circle at top, rgba(212,175,55,.08), transparent 30%),
-        linear-gradient(180deg, #040404 0%, #070707 100%);
+        radial-gradient(circle at 0% 0%, rgba(79,124,255,.22), transparent 30%),
+        radial-gradient(circle at 100% 0%, rgba(255,111,181,.18), transparent 28%),
+        radial-gradient(circle at 100% 100%, rgba(57,213,191,.12), transparent 25%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
       min-height:100vh;
-      display:flex;
-      flex-direction:column;
+      overflow-x:hidden;
     }
 
     a{color:inherit;text-decoration:none}
     img{display:block;max-width:100%}
-
-    #homePage{
-      flex:1;
-      display:flex;
-      flex-direction:column;
-    }
 
     .container{
       width:min(var(--max), calc(100% - 32px));
       margin:0 auto;
     }
 
+    .blob,
+    .blob2,
+    .blob3{
+      position:fixed;
+      border-radius:50%;
+      filter:blur(40px);
+      pointer-events:none;
+      z-index:0;
+    }
+
+    .blob{
+      width:260px;
+      height:260px;
+      top:80px;
+      left:-80px;
+      background:rgba(79,124,255,.18);
+    }
+
+    .blob2{
+      width:280px;
+      height:280px;
+      top:120px;
+      right:-90px;
+      background:rgba(255,111,181,.16);
+    }
+
+    .blob3{
+      width:240px;
+      height:240px;
+      bottom:60px;
+      right:8%;
+      background:rgba(57,213,191,.12);
+    }
+
     .topbar{
       position:sticky;
       top:0;
       z-index:50;
-      background:rgba(5,5,5,.82);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid var(--line);
+      background:rgba(243,247,255,.62);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(20,32,51,.05);
     }
 
     .topbar-inner{
       width:min(var(--max), calc(100% - 32px));
       margin:0 auto;
-      min-height:78px;
+      min-height:86px;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:18px;
+      position:relative;
+      z-index:1;
     }
 
     .brand-lockup{
       display:flex;
       align-items:center;
       gap:14px;
+      min-width:0;
     }
 
     .brand-lockup img{
-      width:54px;
-      height:54px;
+      width:64px;
+      height:64px;
       object-fit:contain;
+      border-radius:18px;
+      padding:7px;
+      background:
+        linear-gradient(135deg, rgba(79,124,255,.12), rgba(122,92,255,.10), rgba(255,111,181,.08)),
+        #fff;
+      box-shadow:var(--shadow-md);
     }
 
     .brand-mini{
-      color:var(--muted);
+      color:var(--text-soft);
       font-size:10px;
       letter-spacing:3px;
+      text-transform:uppercase;
+      margin-bottom:6px;
+    }
+
+    .brand-name{
+      margin:0;
+      font-size:30px;
+      font-weight:900;
+      line-height:1;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      background:var(--grad-main);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .nav{
+      display:flex;
+      gap:20px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .nav a{
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:1.8px;
+      text-transform:uppercase;
+      color:#44566f;
+      transition:.18s ease;
+    }
+
+    .nav a:hover{ color:var(--blue); }
+
+    .cta-row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:50px;
+      padding:0 20px;
+      border-radius:16px;
+      border:1px solid rgba(27,46,84,.08);
+      background:rgba(255,255,255,.78);
+      backdrop-filter:blur(14px);
+      color:#23344b;
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:1.2px;
+      text-transform:uppercase;
+      cursor:pointer;
+      transition:.2s ease;
+      box-shadow:var(--shadow-md);
+    }
+
+    .btn:hover{
+      transform:translateY(-1px);
+      box-shadow:var(--shadow-lg);
+    }
+
+    .btn.primary{
+      border:none;
+      color:#fff;
+      background:var(--grad-main);
+      box-shadow:0 16px 36px rgba(113,92,255,.26);
+    }
+
+    .hero{
+      position:relative;
+      z-index:1;
+      padding:34px 0 18px;
+    }
+
+    .hero-shell{
+      position:relative;
+      overflow:hidden;
+      border-radius:46px;
+      border:1px solid rgba(255,255,255,.62);
+      background:
+        radial-gradient(circle at 8% 10%, rgba(79,124,255,.16), transparent 24%),
+        radial-gradient(circle at 90% 12%, rgba(255,111,181,.16), transparent 22%),
+        radial-gradient(circle at 80% 82%, rgba(57,213,191,.14), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,.68), rgba(249,251,255,.74));
+      backdrop-filter:blur(18px);
+      box-shadow:var(--shadow-xl);
+    }
+
+    .hero-shell:before,
+    .hero-shell:after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      pointer-events:none;
+      filter:blur(10px);
+    }
+
+    .hero-shell:before{
+      width:300px;
+      height:300px;
+      top:-90px;
+      right:-60px;
+      background:radial-gradient(circle, rgba(122,92,255,.18), transparent 68%);
+    }
+
+    .hero-shell:after{
+      width:240px;
+      height:240px;
+      left:-70px;
+      bottom:-70px;
+      background:radial-gradient(circle, rgba(69,208,255,.16), transparent 68%);
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      gap:28px;
+      align-items:center;
+      padding:58px;
+    }
+
+    h1{
+      margin:0;
+      font-size:clamp(54px, 8vw, 108px);
+      line-height:.9;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      color:#16253a;
+    }
+
+    .subbrand{
+      margin-top:12px;
+      font-size:15px;
+      letter-spacing:12px;
+      text-transform:uppercase;
+      color:#6a7b93;
+    }
+
+    .tagline{
+      margin-top:22px;
+      max-width:640px;
+      color:#53657d;
+      font-size:15px;
+      line-height:1.85;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:32px;
+    }
+
+    .hero-stats{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:26px;
+    }
+
+    .stat-pill{
+      display:inline-flex;
+      align-items:center;
+      min-height:40px;
+      padding:0 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.70);
+      border:1px solid rgba(27,46,84,.06);
+      box-shadow:var(--shadow-md);
+      color:#314661;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      backdrop-filter:blur(12px);
+    }
+
+    .hero-card{
+      position:relative;
+      min-height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:40px;
+      border-radius:34px;
+      background:
+        linear-gradient(135deg, rgba(79,124,255,.16), rgba(122,92,255,.10) 34%, rgba(255,111,181,.10) 70%, rgba(255,255,255,.88) 100%),
+        #fff;
+      border:1px solid rgba(255,255,255,.8);
+      box-shadow:var(--shadow-lg);
+      overflow:hidden;
+      backdrop-filter:blur(14px);
+    }
+
+    .hero-card:before{
+      content:"";
+      position:absolute;
+      left:-70px;
+      bottom:-70px;
+      width:220px;
+      height:220px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(255,173,102,.20), transparent 68%);
+      pointer-events:none;
+    }
+
+    .hero-card:after{
+      content:"";
+      position:absolute;
+      top:-40px;
+      right:-40px;
+      width:170px;
+      height:170px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(69,208,255,.16), transparent 68%);
+      pointer-events:none;
+    }
+
+    .hero-card img{
+      position:relative;
+      z-index:1;
+      width:min(100%, 460px);
+      height:auto;
+      object-fit:contain;
+      filter:drop-shadow(0 18px 28px rgba(75,124,255,.16));
+    }
+
+    .section{
+      position:relative;
+      z-index:1;
+      padding:24px 0;
+    }
+
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:18px;
+      margin-bottom:18px;
+      flex-wrap:wrap;
+    }
+
+    .section-label{
+      color:#6c7d95;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      margin-bottom:8px;
+    }
+
+    .section-title{
+      margin:0;
+      color:#17263b;
+      font-size:clamp(30px, 3vw, 46px);
+      line-height:1.02;
+      text-transform:uppercase;
+    }
+
+    .pill-row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      min-height:38px;
+      padding:0 14px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      border:1px solid rgba(27,46,84,.06);
+      background:rgba(255,255,255,.76);
+      color:#29405d;
+      box-shadow:var(--shadow-md);
+      backdrop-filter:blur(12px);
+    }
+
+    .pill.blue{ background:rgba(79,124,255,.10); color:#345ccf; }
+    .pill.cyan{ background:rgba(69,208,255,.12); color:#117ea8; }
+    .pill.violet{ background:rgba(122,92,255,.10); color:#5c43d9; }
+    .pill.pink{ background:rgba(255,111,181,.10); color:#c24079; }
+
+    .lux-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:18px;
+    }
+
+    .glass-card,
+    .story-card,
+    .contact-card{
+      position:relative;
+      overflow:hidden;
+      border-radius:30px;
+      background:linear-gradient(180deg, rgba(255,255,255,.68), rgba(248,250,255,.80));
+      border:1px solid rgba(255,255,255,.82);
+      box-shadow:var(--shadow-lg);
+      backdrop-filter:blur(18px);
+    }
+
+    .glass-card{
+      padding:24px;
+    }
+
+    .glass-card:before{
+      content:"";
+      position:absolute;
+      top:-44px;
+      right:-44px;
+      width:150px;
+      height:150px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(79,124,255,.14), transparent 68%);
+      pointer-events:none;
+    }
+
+    .glass-card.pinkGlow:before{
+      background:radial-gradient(circle, rgba(255,111,181,.16), transparent 68%);
+    }
+
+    .glass-card.tealGlow:before{
+      background:radial-gradient(circle, rgba(57,213,191,.16), transparent 68%);
+    }
+
+    .lux-icon{
+      width:58px;
+      height:58px;
+      border-radius:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:14px;
+      font-size:22px;
+      background:rgba(255,255,255,.74);
+      box-shadow:var(--shadow-md);
+      backdrop-filter:blur(10px);
+    }
+
+    .lux-title{
+      margin:0 0 8px;
+      color:#17263b;
+      font-size:22px;
+      font-weight:900;
+      text-transform:uppercase;
+    }
+
+    .lux-text{
+      margin:0;
+      color:#5b6e86;
+      line-height:1.75;
+      font-size:14px;
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .story-card{
+      padding:32px;
+      background:
+        linear-gradient(135deg, rgba(79,124,255,.08), rgba(255,255,255,.82) 38%, rgba(255,111,181,.08)),
+        rgba(255,255,255,.64);
+    }
+
+    .story-title{
+      margin:0 0 12px;
+      color:#17263b;
+      font-size:28px;
+      text-transform:uppercase;
+    }
+
+    .story-copy{
+      margin:0;
+      color:#586b85;
+      line-height:1.9;
+      font-size:15px;
+    }
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .contact-card{
+      padding:28px;
+    }
+
+    .contact-title{
+      margin:0 0 8px;
+      color:#17263b;
+      font-size:22px;
+      text-transform:uppercase;
+    }
+
+    .contact-text{
+      margin:0 0 18px;
+      color:#5d6f87;
+      line-height:1.8;
+      font-size:14px;
+    }
+
+    .contact-number{
+      margin:10px 0 16px;
+      color:#20324d;
+      font-size:30px;
+      font-weight:900;
+      letter-spacing:1px;
+    }
+
+    .footer-line{
+      height:1px;
+      margin-top:18px;
+      background:linear-gradient(90deg, transparent, rgba(79,124,255,.35), rgba(255,111,181,.35), transparent);
+    }
+
+    .footer{
+      position:relative;
+      z-index:1;
+      padding:30px 0 22px;
+      text-align:center;
+      color:#73859c;
+      font-size:12px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    @media (max-width: 980px){
+      .hero-grid,
+      .split,
+      .contact-grid{
+        grid-template-columns:1fr;
+      }
+
+      .lux-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .nav{
+        display:none;
+      }
+    }
+
+    @media (max-width: 720px){
+      .topbar-inner{
+        min-height:72px;
+      }
+
+      .brand-name{
+        font-size:24px;
+      }
+
+      .hero-grid{
+        padding:28px;
+      }
+
+      .subbrand{
+        font-size:13px;
+        letter-spacing:8px;
+      }
+
+      .lux-grid{
+        grid-template-columns:1fr;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .hero-stats{
+        gap:10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="blob"></div>
+  <div class="blob2"></div>
+  <div class="blob3"></div>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand-lockup">
+        <img src="logo.png" alt="Reforge logo" onerror="this.onerror=null;this.src='logo.jpg';" />
+        <div>
+          <div class="brand-mini">Rebuild • Enhance • Evolve</div>
+          <div class="brand-name">Reforge</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#design">Design</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="cta-row">
+        <a class="btn primary" href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-shell">
+          <div class="hero-grid">
+            <div>
+              <h1>Reforge</h1>
+              <div class="subbrand">Colorful Luxury</div>
+
+              <div class="tagline">
+                Bright, premium, logo-centered, and polished. This version pushes the site
+                further into a luxury visual direction with floating glass panels, richer
+                gradients, larger hero presence, and cleaner spacing throughout.
+              </div>
+
+              <div class="hero-actions">
+                <a class="btn primary" href="#contact">Get In Touch</a>
+                <a class="btn" href="#design">Explore Design</a>
+              </div>
+
+              <div class="hero-stats">
+                <div class="stat-pill">Luxury Feel</div>
+                <div class="stat-pill">Glass Layout</div>
+                <div class="stat-pill">Modern Identity</div>
+              </div>
+            </div>
+
+            <div class="hero-card">
+              <img src="logo.png" alt="Reforge brand logo" onerror="this.onerror=null;this.src='logo.jpg';" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="design">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-label">Design Language</div>
+            <h2 class="section-title">Floating luxury blocks</h2>
+          </div>
+
+          <div class="pill-row">
+            <div class="pill blue">Bright</div>
+            <div class="pill cyan">Premium</div>
+            <div class="pill violet">Luxury</div>
+            <div class="pill pink">Modern</div>
+          </div>
+        </div>
+
+        <div class="lux-grid">
+          <div class="glass-card">
+            <div class="lux-icon">✦</div>
+            <h3 class="lux-title">Bigger hero impact</h3>
+            <p class="lux-text">
+              Larger typography, stronger headline spacing, and an oversized logo presentation
+              create a more expensive first impression.
+            </p>
+          </div>
+
+          <div class="glass-card pinkGlow">
+            <div class="lux-icon">⬢</div>
+            <h3 class="lux-title">Glass card feel</h3>
+            <p class="lux-text">
+              Frosted white panels, layered gradients, soft shadows, and floating highlight
+              glows make the site feel cleaner and more premium.
+            </p>
+          </div>
+
+          <div class="glass-card tealGlow">
+            <div class="lux-icon">⚡</div>
+            <h3 class="lux-title">Cleaner page rhythm</h3>
+            <p class="lux-text">
+              Better section spacing, simpler content blocks, and stronger visual separation
+              help the whole page breathe more.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="split">
+          <div class="story-card">
+            <div class="section-label">About</div>
+            <h3 class="story-title">Brand-forward landing page</h3>
+            <p class="story-copy">
+              This keeps the one-file setup from your uploaded source, but transforms the site
+              into a brighter, more luxurious, more visual landing page with a stronger brand
+              identity and cleaner presentation. :contentReference[oaicite:1]{index=1}
+            </p>
+          </div>
+
+          <div class="story-card">
+            <div class="section-label">Visual Direction</div>
+            <h3 class="story-title">What changed</h3>
+            <p class="story-copy">
+              The design swaps flat sections for floating glass panels, adds soft colorful glow,
+              increases hero size, and uses more premium spacing and framing so it feels closer
+              to a designer mockup.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="section-label">Contact</div>
+            <h3 class="contact-title">Direct line</h3>
+            <p class="contact-text">
+              Clean contact section with no sales flow, no pricing, and no checkout. Just a
+              polished brand destination with direct contact access.
+            </p>
+            <div class="contact-number">310-218-7321</div>
+            <a class="btn primary" href="https://wa.me/13102187321" target="_blank" rel="noopener">Open WhatsApp</a>
+          </div>
+
+          <div class="contact-card">
+            <div class="section-label">GitHub Setup</div>
+            <h3 class="contact-title">Paste and deploy</h3>
+            <p class="contact-text">
+              Replace your current <strong>index.html</strong> with this entire file. Keep your
+              logo in the same folder named <strong>logo.png</strong> or <strong>logo.jpg</strong>,
+              then commit and redeploy.
+            </p>
+            <a class="btn" href="#about">Review Layout</a>
+          </div>
+        </div>
+
+        <div class="footer-line"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    © <span id="year"></span> Reforge
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>      letter-spacing:3px;
       text-transform:uppercase;
       margin-bottom:6px;
     }
