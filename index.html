@@ -413,14 +413,6 @@ textarea{
       </div>
 
       <div class="field">
-        <label for="firstTimeCustomer">First Time Customer</label>
-        <select id="firstTimeCustomer" onchange="updateSummary()">
-          <option value="no">No</option>
-          <option value="yes">Yes — 20% off products</option>
-        </select>
-      </div>
-
-      <div class="field">
         <label for="notes">Notes</label>
         <textarea id="notes" placeholder="Special instructions"></textarea>
       </div>
@@ -428,11 +420,6 @@ textarea{
       <div class="summary-row">
         <span>Product Subtotal</span>
         <span id="productSubtotal">$0.00</span>
-      </div>
-
-      <div class="summary-row">
-        <span>First-Time Discount</span>
-        <span id="discountAmount">-$0.00</span>
       </div>
 
       <div class="summary-row">
@@ -478,7 +465,7 @@ const products = [
 ];
 
 const SHIPPING_COST = 15;
-const FIRST_TIME_DISCOUNT = 0.20;
+const BULK_DISCOUNT = 0.10; // 10% off at 3+
 const WHATSAPP_NUMBER = "13102187321";
 
 function money(num){
@@ -541,11 +528,21 @@ function buildOrderRows(){
 
 function getOrderData(){
   let subtotal = 0;
+  let bulkDiscountTotal = 0;
   let items = [];
 
   products.forEach((p, i) => {
     const qty = Number(document.getElementById(`qty-${i}`).value || 0);
-    const line = qty * p.price;
+
+    let line = qty * p.price;
+    let discount = 0;
+
+    if(qty >= 3){
+      discount = line * BULK_DISCOUNT;
+      line = line - discount;
+      bulkDiscountTotal += discount;
+    }
+
     document.getElementById(`line-${i}`).textContent = money(line);
 
     if(qty > 0){
@@ -554,14 +551,20 @@ function getOrderData(){
         name: p.name,
         size: p.size,
         qty: qty,
-        lineTotal: line
+        lineTotal: line,
+        bulkApplied: qty >= 3
       });
     }
   });
 
-  const firstTime = document.getElementById("firstTimeCustomer").value === "yes";
-  const discount = firstTime ? subtotal * FIRST_TIME_DISCOUNT : 0;
-  const total = subtotal - discount + SHIPPING_COST;
+  const total = subtotal + SHIPPING_COST;
+
+  return { items, subtotal, bulkDiscountTotal, total };
+}
+
+const total = subtotal + SHIPPING_COST;
+
+return { items, subtotal, total };
 
   return {
     items,
@@ -574,8 +577,9 @@ function getOrderData(){
 
 function updateSummary(){
   const data = getOrderData();
+
   document.getElementById("productSubtotal").textContent = money(data.subtotal);
-  document.getElementById("discountAmount").textContent = "-" + money(data.discount);
+  document.getElementById("bulkDiscount").textContent = "-" + money(data.bulkDiscountTotal);
   document.getElementById("shippingAmount").textContent = money(SHIPPING_COST);
   document.getElementById("orderTotal").textContent = money(data.total);
 }
@@ -610,11 +614,16 @@ Shipping Address:
 ${shippingAddress}
 
 Items:
-${data.items.map(item => `- ${item.name} ${item.size} x${item.qty} = ${money(item.lineTotal)}`).join("\n")}
+${data.items.map(item => 
+  `- ${item.name} ${item.size} x${item.qty} = ${money(item.lineTotal)}${item.bulkApplied ? " (Bulk Applied)" : ""}`
+).join("\\n")}
 
 Product Subtotal: ${money(data.subtotal)}
-First-Time Customer: ${data.firstTime ? "Yes" : "No"}
-First-Time Discount: -${money(data.discount)}
+Bulk Discount: -${money(data.bulkDiscountTotal)}
+<div class="summary-line">
+  <span>Bulk Discount</span>
+  <span id="bulkDiscount">-$0.00</span>
+</div>
 Shipping: ${money(SHIPPING_COST)}
 Total: ${money(data.total)}
 `;
