@@ -367,7 +367,7 @@ textarea{
 </div>
 
 <!-- ORDER PAGE -->
-<div class="container order-page" id="orderPage">
+<div class="container order-page" id="orderPage" style="display:none;">
 
   <img src="logo.jpg" class="logo" alt="Reforge Anchor Logo" />
 
@@ -480,20 +480,32 @@ const SHIPPING_COST = 15;
 const FIRST_TIME_DISCOUNT = 0.20;
 const WHATSAPP_NUMBER = "13102187321";
 
-function money(num){
+function money(num) {
   return "$" + Number(num).toFixed(2);
 }
 
-function showOrderPage(){
-  document.getElementById("homePage").style.display = "none";
-  document.getElementById("orderPage").style.display = "block";
-  window.scrollTo(0,0);
+function showOrderPage() {
+  const homePage = document.getElementById("homePage");
+  const orderPage = document.getElementById("orderPage");
+  if (homePage) homePage.style.display = "none";
+  if (orderPage) orderPage.style.display = "block";
+  window.scrollTo(0, 0);
 }
 
-function buildMenuPreview(){
+function showHomePage() {
+  const homePage = document.getElementById("homePage");
+  const orderPage = document.getElementById("orderPage");
+  if (orderPage) orderPage.style.display = "none";
+  if (homePage) homePage.style.display = "block";
+  window.scrollTo(0, 0);
+}
+
+function buildMenuPreview() {
   const wrap = document.getElementById("menuPreviewRows");
+  if (!wrap) return;
   wrap.innerHTML = "";
-  products.forEach(p => {
+
+  products.forEach((p) => {
     const row = document.createElement("div");
     row.className = "menu-preview-row";
     row.innerHTML = `
@@ -505,9 +517,11 @@ function buildMenuPreview(){
   });
 }
 
-function buildOrderRows(){
+function buildOrderRows() {
   const wrap = document.getElementById("orderRows");
+  if (!wrap) return;
   wrap.innerHTML = "";
+
   products.forEach((p, i) => {
     const row = document.createElement("div");
     row.className = "order-row";
@@ -532,16 +546,19 @@ function buildOrderRows(){
   });
 }
 
-function getOrderData(){
+function getOrderData() {
   let subtotal = 0;
   let items = [];
 
   products.forEach((p, i) => {
-    const qty = Number(document.getElementById(`qty-${i}`).value || 0);
+    const qtyEl = document.getElementById(`qty-${i}`);
+    const lineEl = document.getElementById(`line-${i}`);
+    const qty = qtyEl ? Number(qtyEl.value || 0) : 0;
     const line = qty * p.price;
-    document.getElementById(`line-${i}`).textContent = money(line);
 
-    if(qty > 0){
+    if (lineEl) lineEl.textContent = money(line);
+
+    if (qty > 0) {
       subtotal += line;
       items.push({
         name: p.name,
@@ -552,7 +569,8 @@ function getOrderData(){
     }
   });
 
-  const firstTime = document.getElementById("firstTimeCustomer").value === "yes";
+  const firstTimeEl = document.getElementById("firstTimeCustomer");
+  const firstTime = firstTimeEl ? firstTimeEl.value === "yes" : false;
   const discount = firstTime ? subtotal * FIRST_TIME_DISCOUNT : 0;
   const total = subtotal - discount + SHIPPING_COST;
 
@@ -565,32 +583,38 @@ function getOrderData(){
   };
 }
 
-function updateSummary(){
+function updateSummary() {
   const data = getOrderData();
-  document.getElementById("productSubtotal").textContent = money(data.subtotal);
-  document.getElementById("discountAmount").textContent = "-" + money(data.discount);
-  document.getElementById("shippingAmount").textContent = money(SHIPPING_COST);
-  document.getElementById("orderTotal").textContent = money(data.total);
+
+  const subtotalEl = document.getElementById("productSubtotal");
+  const discountEl = document.getElementById("discountAmount");
+  const shippingEl = document.getElementById("shippingAmount");
+  const totalEl = document.getElementById("orderTotal");
+
+  if (subtotalEl) subtotalEl.textContent = money(data.subtotal);
+  if (discountEl) discountEl.textContent = "-" + money(data.discount);
+  if (shippingEl) shippingEl.textContent = money(SHIPPING_COST);
+  if (totalEl) totalEl.textContent = money(data.total);
 }
 
-function sendOrder(){
-  const customerName = document.getElementById("customerName").value.trim();
-  const shippingAddress = document.getElementById("shippingAddress").value.trim();
-  const referralName = document.getElementById("referralName").value.trim();
-  const notes = document.getElementById("notes").value.trim();
+function sendOrder() {
+  const customerName = document.getElementById("customerName")?.value.trim() || "";
+  const shippingAddress = document.getElementById("shippingAddress")?.value.trim() || "";
+  const referralName = document.getElementById("referralName")?.value.trim() || "";
+  const notes = document.getElementById("notes")?.value.trim() || "";
   const data = getOrderData();
 
-  if(!customerName){
+  if (!customerName) {
     alert("Please enter customer name.");
     return;
   }
 
-  if(!shippingAddress){
+  if (!shippingAddress) {
     alert("Please enter shipping address.");
     return;
   }
 
-  if(data.items.length === 0){
+  if (data.items.length === 0) {
     alert("Please select at least one product.");
     return;
   }
@@ -612,14 +636,14 @@ Shipping: ${money(SHIPPING_COST)}
 Total: ${money(data.total)}
 `;
 
-  if(referralName){
+  if (referralName) {
     message += `
 Referred By: ${referralName}
 Referral Reward Note: ${referralName} gets 30% off their next order.
 `;
   }
 
-  if(notes){
+  if (notes) {
     message += `
 Notes: ${notes}
 `;
@@ -629,7 +653,11 @@ Notes: ${notes}
   window.open(url, "_blank");
 }
 
-document.getElementById("year").textContent = new Date().getFullYear();
+const yearEl = document.getElementById("year");
+if (yearEl) {
+  yearEl.textContent = new Date().getFullYear();
+}
+
 buildMenuPreview();
 buildOrderRows();
 updateSummary();
