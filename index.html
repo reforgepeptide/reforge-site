@@ -363,8 +363,9 @@ textarea{
 
   <div class="footer">
      © <span id="year"></span> REFORGE PEPTIDES
+  </div>
 </div>
-  
+
 <!-- ORDER PAGE -->
 <div class="container order-page" id="orderPage">
 
@@ -379,7 +380,6 @@ textarea{
     <div class="card">
       <h3>Build Order</h3>
       <p>Select quantities below.</p>
-
       <div class="order-table">
         <div class="order-row order-head">
           <div>Product</div>
@@ -482,12 +482,6 @@ const WHATSAPP_NUMBER = "13102187321";
 
 function money(num){
   return "$" + Number(num).toFixed(2);
-}
-
-function showOrderPage(){
-  document.getElementById("homePage").style.display = "none";
-  document.getElementById("orderPage").style.display = "block";
-  window.scrollTo(0,0);
 }
 
 function showHomePage(){
