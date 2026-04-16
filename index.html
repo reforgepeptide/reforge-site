@@ -344,7 +344,7 @@ textarea{
     </div>
 
     <div class="top-actions">
-      <button class="button" onclick="showOrderPage()">START ORDER</button>
+    <button class="button" onclick="alert('button works'); showOrderPage();">START ORDER</button>
     </div>
   </div>
 
@@ -368,6 +368,7 @@ textarea{
 
 <!-- ORDER PAGE -->
 <div class="container order-page" id="orderPage" style="display:none;">
+<h2 style="color:white;">ORDER PAGE TEST</h2>
 
   <img src="logo.jpg" class="logo" alt="Reforge Anchor Logo" />
 
@@ -485,10 +486,12 @@ function money(num) {
 }
 
 function showOrderPage() {
+  alert("showOrderPage ran");
   const homePage = document.getElementById("homePage");
   const orderPage = document.getElementById("orderPage");
   if (homePage) homePage.style.display = "none";
   if (orderPage) orderPage.style.display = "block";
+  orderPage.style.background = "red";
   window.scrollTo(0, 0);
 }
 
