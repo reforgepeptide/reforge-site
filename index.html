@@ -146,7 +146,7 @@ body{
 }
 
 .order-page{
-  display:block;
+  display:none;
 }
 
 .order-layout{
@@ -484,9 +484,9 @@ function money(num){
   return "$" + Number(num).toFixed(2);
 }
 
-function showHomePage(){
-  document.getElementById("orderPage").style.display = "none";
-  document.getElementById("homePage").style.display = "block";
+function showOrderPage(){
+  document.getElementById("homePage").style.display = "none";
+  document.getElementById("orderPage").style.display = "block";
   window.scrollTo(0,0);
 }
 
