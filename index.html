@@ -491,7 +491,6 @@ function showOrderPage() {
   const orderPage = document.getElementById("orderPage");
   if (homePage) homePage.style.display = "none";
   if (orderPage) orderPage.style.display = "block";
-  orderPage.style.background = "red";
   window.scrollTo(0, 0);
 }
 
@@ -657,6 +656,27 @@ Notes: ${notes}
 }
 
 const yearEl = document.getElementById("year");
+if (yearEl) {
+  yearEl.textContent = new Date().getFullYear();
+}
+
+try {
+  buildMenuPreview();
+} catch (e) {
+  console.error("menu preview failed", e);
+}
+
+try {
+  buildOrderRows();
+} catch (e) {
+  console.error("order rows failed", e);
+}
+
+try {
+  updateSummary();
+} catch (e) {
+  console.error("summary failed", e);
+}
 if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
