@@ -145,6 +145,10 @@ body{
   border-bottom:none;
 }
 
+.order-page{
+  display:none;
+}
+
 .order-layout{
   display:grid;
   grid-template-columns:1.2fr .8fr;
@@ -340,7 +344,7 @@ textarea{
     </div>
 
     <div class="top-actions">
-      <a class="button" href="#orderPage">START ORDER</a>
+      <button class="button" onclick="showOrderPage()">START ORDER</button>
     </div>
   </div>
 
@@ -358,14 +362,12 @@ textarea{
   </div>
 
   <div class="footer">
-     © <span id="year"></span> REFORGE PEPTIDES
+    Â© <span id="year"></span> REFORGE PEPTIDES
   </div>
 </div>
 
-<div class="divider"></div>
-
 <!-- ORDER PAGE -->
-<div class="container" id="orderPage">
+<div class="container order-page" id="orderPage">
 
   <img src="logo.jpg" class="logo" alt="Reforge Anchor Logo" />
 
@@ -378,6 +380,7 @@ textarea{
     <div class="card">
       <h3>Build Order</h3>
       <p>Select quantities below.</p>
+
       <div class="order-table">
         <div class="order-row order-head">
           <div>Product</div>
@@ -413,7 +416,7 @@ textarea{
         <label for="firstTimeCustomer">First Time Customer</label>
         <select id="firstTimeCustomer" onchange="updateSummary()">
           <option value="no">No</option>
-          <option value="yes">Yes — 20% off products</option>
+          <option value="yes">Yes â€” 20% off products</option>
         </select>
       </div>
 
@@ -443,7 +446,7 @@ textarea{
       </div>
 
       <button class="button" onclick="sendOrder()">COMPLETE ORDER</button>
-      <a class="button" href="#homePage">BACK TO HOME</a>
+      <button class="button" onclick="showHomePage()">BACK TO HOME</button>
 
       <div class="note">
         If a referral name is entered, the WhatsApp order will include a note that the referrer gets 30% off their next order.
@@ -456,38 +459,48 @@ textarea{
 const products = [
   { name: "Tirzepatide", size: "10mg", price: 60 },
   { name: "Tirzepatide", size: "20mg", price: 120 },
-  { name: "Tirzepatide", size: "30mg", price: 160 },
-  { name: "Retatrutide", size: "10mg", price: 110 },
+  { name: "Tirzepatide", size: "30mg", price: 175 },
+  { name: "Retatrutide", size: "10mg", price: 100 },
   { name: "Retatrutide", size: "30mg", price: 220 },
-  { name: "GHK-Cu", size: "50mg", price: 45 },
-  { name: "Selank", size: "5mg", price: 30 },
-  { name: "BPC-157", size: "10mg", price: 45 },
-  { name: "TB500", size: "5mg", price: 30 },
+  { name: "GHK-Cu", size: "50mg", price: 50 },
+  { name: "Selank", size: "5mg", price: 50 },
+  { name: "BPC-157", size: "10mg", price: 50 },
+  { name: "TB500", size: "5mg", price: 40 },
   { name: "TB500", size: "10mg", price: 75 },
   { name: "Thymosin Alpha-1", size: "5mg", price: 90 },
-  { name: "NAD+", size: "500mg", price: 40 },
-  { name: "HGH", size: "100iu", price: 250 },
+  { name: "NAD+", size: "500mg", price: 60 },
+  { name: "HGH", size: "100iu", price: 350 },
   { name: "Pramlintide", size: "5mg", price: 110 },
-  { name: "Cagrilintide", size: "5mg", price: 150 },
+  { name: "Cagrilintide", size: "5mg", price: 125 },
   { name: "MOTS-c", size: "10mg", price: 60 },
-  { name: "L-Carnitine", size: "500mg", price: 60 },
-  { name: "IGF-1 LR3", size: "1mg", price: 120 }
+  { name: "L-Carnitine", size: "500mg", price: 75 },
+  { name: "IGF-1 LR3", size: "1mg", price: 200 }
 ];
 
 const SHIPPING_COST = 15;
 const FIRST_TIME_DISCOUNT = 0.20;
 const WHATSAPP_NUMBER = "13102187321";
 
-function money(num) {
+function money(num){
   return "$" + Number(num).toFixed(2);
 }
 
-function buildMenuPreview() {
-  const wrap = document.getElementById("menuPreviewRows");
-  if (!wrap) return;
-  wrap.innerHTML = "";
+function showOrderPage(){
+  document.getElementById("homePage").style.display = "none";
+  document.getElementById("orderPage").style.display = "block";
+  window.scrollTo(0,0);
+}
 
-  products.forEach((p) => {
+function showHomePage(){
+  document.getElementById("orderPage").style.display = "none";
+  document.getElementById("homePage").style.display = "block";
+  window.scrollTo(0,0);
+}
+
+function buildMenuPreview(){
+  const wrap = document.getElementById("menuPreviewRows");
+  wrap.innerHTML = "";
+  products.forEach(p => {
     const row = document.createElement("div");
     row.className = "menu-preview-row";
     row.innerHTML = `
@@ -499,11 +512,9 @@ function buildMenuPreview() {
   });
 }
 
-function buildOrderRows() {
+function buildOrderRows(){
   const wrap = document.getElementById("orderRows");
-  if (!wrap) return;
   wrap.innerHTML = "";
-
   products.forEach((p, i) => {
     const row = document.createElement("div");
     row.className = "order-row";
@@ -528,19 +539,16 @@ function buildOrderRows() {
   });
 }
 
-function getOrderData() {
+function getOrderData(){
   let subtotal = 0;
   let items = [];
 
   products.forEach((p, i) => {
-    const qtyEl = document.getElementById(`qty-${i}`);
-    const lineEl = document.getElementById(`line-${i}`);
-    const qty = qtyEl ? Number(qtyEl.value || 0) : 0;
+    const qty = Number(document.getElementById(`qty-${i}`).value || 0);
     const line = qty * p.price;
+    document.getElementById(`line-${i}`).textContent = money(line);
 
-    if (lineEl) lineEl.textContent = money(line);
-
-    if (qty > 0) {
+    if(qty > 0){
       subtotal += line;
       items.push({
         name: p.name,
@@ -551,8 +559,7 @@ function getOrderData() {
     }
   });
 
-  const firstTimeEl = document.getElementById("firstTimeCustomer");
-  const firstTime = firstTimeEl ? firstTimeEl.value === "yes" : false;
+  const firstTime = document.getElementById("firstTimeCustomer").value === "yes";
   const discount = firstTime ? subtotal * FIRST_TIME_DISCOUNT : 0;
   const total = subtotal - discount + SHIPPING_COST;
 
@@ -565,38 +572,32 @@ function getOrderData() {
   };
 }
 
-function updateSummary() {
+function updateSummary(){
   const data = getOrderData();
-
-  const subtotalEl = document.getElementById("productSubtotal");
-  const discountEl = document.getElementById("discountAmount");
-  const shippingEl = document.getElementById("shippingAmount");
-  const totalEl = document.getElementById("orderTotal");
-
-  if (subtotalEl) subtotalEl.textContent = money(data.subtotal);
-  if (discountEl) discountEl.textContent = "-" + money(data.discount);
-  if (shippingEl) shippingEl.textContent = money(SHIPPING_COST);
-  if (totalEl) totalEl.textContent = money(data.total);
+  document.getElementById("productSubtotal").textContent = money(data.subtotal);
+  document.getElementById("discountAmount").textContent = "-" + money(data.discount);
+  document.getElementById("shippingAmount").textContent = money(SHIPPING_COST);
+  document.getElementById("orderTotal").textContent = money(data.total);
 }
 
-function sendOrder() {
-  const customerName = document.getElementById("customerName")?.value.trim() || "";
-  const shippingAddress = document.getElementById("shippingAddress")?.value.trim() || "";
-  const referralName = document.getElementById("referralName")?.value.trim() || "";
-  const notes = document.getElementById("notes")?.value.trim() || "";
+function sendOrder(){
+  const customerName = document.getElementById("customerName").value.trim();
+  const shippingAddress = document.getElementById("shippingAddress").value.trim();
+  const referralName = document.getElementById("referralName").value.trim();
+  const notes = document.getElementById("notes").value.trim();
   const data = getOrderData();
 
-  if (!customerName) {
+  if(!customerName){
     alert("Please enter customer name.");
     return;
   }
 
-  if (!shippingAddress) {
+  if(!shippingAddress){
     alert("Please enter shipping address.");
     return;
   }
 
-  if (data.items.length === 0) {
+  if(data.items.length === 0){
     alert("Please select at least one product.");
     return;
   }
@@ -618,14 +619,14 @@ Shipping: ${money(SHIPPING_COST)}
 Total: ${money(data.total)}
 `;
 
-  if (referralName) {
+  if(referralName){
     message += `
 Referred By: ${referralName}
 Referral Reward Note: ${referralName} gets 30% off their next order.
 `;
   }
 
-  if (notes) {
+  if(notes){
     message += `
 Notes: ${notes}
 `;
@@ -635,11 +636,7 @@ Notes: ${notes}
   window.open(url, "_blank");
 }
 
-const yearEl = document.getElementById("year");
-if (yearEl) {
-  yearEl.textContent = new Date().getFullYear();
-}
-
+document.getElementById("year").textContent = new Date().getFullYear();
 buildMenuPreview();
 buildOrderRows();
 updateSummary();
