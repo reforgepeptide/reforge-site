@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Keep private/member-only areas out of search crawlers.
+Disallow: /member/
+Disallow: /private/
+Disallow: /checkout/
+
+# Main XML sitemap.
+Sitemap: https://www.reforgepeptide.com/sitemap.xml
