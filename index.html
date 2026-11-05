@@ -1001,11 +1001,14 @@ async function notifyCheckout(order){
   if(results[0].status==='rejected'){
     throw new Error('We could not send your order to the order system. Your invoice is saved on this device. Please retry shortly.');
   }
-  // A no-cors request is opaque: dispatch alone does not verify a spreadsheet row.
+  // The order request has been dispatched. If email fails, show a manual-email
+  // fallback instead of throwing: throwing re-enables Submit and can create a
+  // duplicate order when the customer tries again.
   if(results[1].status==='rejected'){
-    throw new Error('Your order was sent to the order system, but the confirmation email could not be sent. Please contact Reforge before submitting again.');
+    console.error('Reforge confirmation email failed:', results[1].reason);
+    return {automatic:false,sheetDispatched:true,emailError:true};
   }
-  return {automatic:true,sheetDispatched:true};
+  return {automatic:true,sheetDispatched:true,emailError:false};
 }
 function renderCheckout(order, automatic){
   const invoiceView=document.getElementById('invoiceView');
@@ -1014,9 +1017,9 @@ function renderCheckout(order, automatic){
   checkoutView.classList.add('active');
   const paymentReady=!CHECKOUT_CONFIG.venmo.startsWith('YOUR_')&&!CHECKOUT_CONFIG.zelle.startsWith('YOUR_');
   checkoutView.innerHTML=`<div class="order-confirmation">
-    <span class="order-badge">${automatic?'Order submitted':'Email submission needed'}</span>
+    <span class="order-badge">${automatic?'Order submitted':'Order received · email needs attention'}</span>
     <h2>Thank you, ${escapeHtml(order.customer.name.split(' ')[0]||order.customer.name)}</h2>
-    <p class="drawer-note">${automatic?`Order #${escapeHtml(order.orderNumber)} has been submitted. Your receipt and payment details are below.`:`Invoice #${escapeHtml(order.orderNumber)} is saved on this device. Send it by email below before making payment.`}</p>
+    <p class="drawer-note">${automatic?`Order #${escapeHtml(order.orderNumber)} has been submitted. Your receipt and payment details are below.`:`Order #${escapeHtml(order.orderNumber)} was sent to the order system, but the automatic email failed. Use the email button below to send a backup copy. Do not submit this order again.`}</p>
     <div class="receipt-card">
       <strong>Order #${escapeHtml(order.orderNumber)}</strong>
       <div class="receipt-items">${order.items.map(i=>`<div class="receipt-item"><span>${escapeHtml(i.name)} × ${i.qty}</span><strong>${money(i.price*i.qty)}</strong></div>`).join('')}</div>
@@ -1029,7 +1032,7 @@ function renderCheckout(order, automatic){
       <div class="payment-methods"><div class="payment-method"><strong>Venmo</strong><span>${escapeHtml(CHECKOUT_CONFIG.venmo)}</span></div><div class="payment-method"><strong>Zelle</strong><span>${escapeHtml(CHECKOUT_CONFIG.zelle)}</span></div><div class="payment-method"><strong>Phone</strong><span>${escapeHtml(CHECKOUT_CONFIG.phone)}</span></div></div>
       <p class="payment-note">Please include the order number in the payment memo so your payment can be matched to the correct invoice.</p>
     </div>
-    <div class="checkout-status"><strong>Receipt:</strong> ${automatic?'Your order confirmation was emailed automatically. You do not need to open your email app or send anything manually.':'Automatic email failed. Your order has not been confirmed. Use Send order by email below, then tap Send in your email app. Your invoice and cart are saved on this device.'}</div>
+    <div class="checkout-status"><strong>Receipt:</strong> ${automatic?'Your order confirmation was emailed automatically. You do not need to open your email app or send anything manually.':'Your order was dispatched to the order system. The automatic confirmation email failed, so please use Send order by email below and tap Send in your email app. Do not submit the order again.'}</div>
     <div class="checkout-actions">${!automatic?`<a class="pill primary" href="${escapeHtml('mailto:'+CHECKOUT_CONFIG.ownerEmail+'?subject='+encodeURIComponent('Reforge order #'+order.orderNumber)+'&body='+encodeURIComponent(orderText(order)))}">Send order by email</a><button class="pill secondary" id="copyOrderDetails" type="button">Copy order details</button>`:''}<button class="pill secondary" id="printReceipt" type="button">Print / save receipt</button><button class="pill primary" id="continueShopping" type="button">Continue shopping</button></div>
   </div>`;
   const copyButton=document.getElementById('copyOrderDetails');
