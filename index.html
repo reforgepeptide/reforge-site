@@ -978,7 +978,14 @@ async function notifyCheckout(order){
   }
   const params={
     customer_name: order.customer.name,
+    from_name: order.customer.name,
+    name: order.customer.name,
+    to_name: order.customer.name,
+    customer_full_name: order.customer.name,
     customer_email: order.customer.email,
+    from_email: order.customer.email,
+    reply_to: order.customer.email,
+    to_email: order.customer.email,
     customer_phone: order.customer.phone,
     order_number: order.orderNumber,
     order_items: order.items.map(i=>`${i.name} × ${i.qty} — ${money(i.price*i.qty)}`).join('\n'),
@@ -1022,6 +1029,8 @@ function renderCheckout(order, automatic){
     <p class="drawer-note">${automatic?`Order #${escapeHtml(order.orderNumber)} has been submitted. Your receipt and payment details are below.`:`Order #${escapeHtml(order.orderNumber)} was sent to the order system, but the automatic email failed. Use the email button below to send a backup copy. Do not submit this order again.`}</p>
     <div class="receipt-card">
       <strong>Order #${escapeHtml(order.orderNumber)}</strong>
+      <div style="margin-top:12px"><strong>Customer:</strong> ${escapeHtml(order.customer.name)}</div>
+      <div style="margin-top:5px"><strong>Email:</strong> ${escapeHtml(order.customer.email)}</div>
       <div class="receipt-items">${order.items.map(i=>`<div class="receipt-item"><span>${escapeHtml(i.name)} × ${i.qty}</span><strong>${money(i.price*i.qty)}</strong></div>`).join('')}</div>
       <div class="receipt-lines"><div class="receipt-line"><span>Subtotal</span><strong>${money(order.subtotal)}</strong></div><div class="receipt-line"><span>Shipping</span><strong>${order.shipping===0 && order.delivery.method==='shipping'?'FREE':money(order.shipping)}</strong></div><div class="receipt-line total"><span>Total due</span><strong>${money(order.total)}</strong></div></div>
       <small>${escapeHtml(order.delivery.label)}${order.delivery.address?` · ${escapeHtml(order.delivery.address).replace(/\n/g,', ')}`:''}</small>
