@@ -323,7 +323,7 @@ html.eligibility-locked body > :not(#eligibilityGate):not(script):not(style){vis
 <strong>Payment and delivery</strong>
 <p>Pay by Zelle or Venmo after submitting your invoice. Payment instructions include your total and order reference. Processing begins after payment is verified.</p>
 <p>Shipping is $15 for product subtotals of $200 or less and free for product subtotals over $200. Local pickup has no shipping charge.</p>
-<p>Need help with an order? Email <a href="/cdn-cgi/l/email-protection#c597a0a3aab7a2a0b5a0b5b1aca1a085a2a8a4aca9eba6aaa8"><span class="__cf_email__" data-cfemail="bae8dfdcd5c8dddfcadfcaced3dedffaddd7dbd3d694d9d5d7">[email&#160;protected]</span></a> with your order number.</p>
+<p>Need help with an order? Email <a href="mailto:Reforgepeptide@gmail.com">Reforgepeptide@gmail.com</a> with your order number.</p>
 </div>
 <div aria-label="Featured catalog items" class="featured-bar">
 <button class="featured-link" data-find="Retatrutide" type="button">Retatrutide</button>
@@ -715,7 +715,7 @@ html.eligibility-locked body > :not(#eligibilityGate):not(script):not(style){vis
 <footer>
 <div class="footer-brand"><img alt="Reforge logo" data-logo-clone="true" style="width:150px;height:auto;object-fit:contain;border-radius:8px;background:#fff"/><span>Independent Research Supply</span></div>
 <div class="footer-links">
-<a href="/cdn-cgi/l/email-protection#346651525b465351445144405d5051745359555d581a575b59"><span class="__cf_email__" data-cfemail="f0a295969f82979580958084999495b0979d91999cde939f9d">[email&#160;protected]</span></a>
+<a href="mailto:Reforgepeptide@gmail.com">Reforgepeptide@gmail.com</a>
 <a href="https://www.reforgepeptide.com" rel="noopener" target="_blank">reforgepeptide.com</a>
 </div>
 <small>Products are offered exclusively for legitimate research use and are not for human or veterinary use.</small>
@@ -733,10 +733,10 @@ html.eligibility-locked body > :not(#eligibilityGate):not(script):not(style){vis
 </form>
 </div>
 </div>
-<aside aria-hidden="true" class="drawer" id="drawer">
+<aside aria-hidden="true" inert role="dialog" aria-label="Order invoice" class="drawer" id="drawer">
 <div class="drawer-head">
 <div><span class="kicker">ORDER INVOICE</span><h2>Your invoice</h2></div>
-<button class="close" id="closeInquiry" type="button">×</button>
+<button class="close" id="closeInquiry" aria-label="Close invoice" type="button">×</button>
 </div>
 <div class="invoice-view" id="invoiceView"><p class="drawer-note">Review your items, delivery details, and total below. Checkout creates your order, automatically emails your confirmation, and opens the payment instructions.</p><div class="cart-items" id="cartItems"></div>
 <div class="totals">
@@ -746,8 +746,8 @@ html.eligibility-locked body > :not(#eligibilityGate):not(script):not(style){vis
 </div>
 <form id="inquiryForm">
 <div class="two">
-<label>Name<input id="customerName" required=""/></label>
-<label>Phone<input id="customerPhone" required=""/></label>
+<label>Name<input id="customerName" autocomplete="name" required=""/></label>
+<label>Phone<input id="customerPhone" type="tel" autocomplete="tel-national" required=""/></label>
 </div>
 <label>Email<input id="customerEmail" required="" type="email"/></label>
 <label>Delivery option
@@ -780,7 +780,7 @@ html.eligibility-locked body > :not(#eligibilityGate):not(script):not(style){vis
 <div class="overlay" id="overlay"></div>
 <button class="mobile-inquiry" id="mobileInquiry" type="button"><span>View invoice</span><span id="mobileCartCount">0 items</span></button>
 <div aria-live="polite" class="toast" id="toast" role="status">Added to invoice</div>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" type="text/javascript"></script>
 <script>
 document.querySelectorAll('[data-logo-clone]').forEach(img=>img.src=document.querySelector('.brand-logo img').src);
 const PRODUCTS = [{"category":"Performance Research","name":"HCG 5000 IU","price":50,"tag":"Research","format":"Freeze-Dried / Vials"},{"category":"Private Catalog","name":"Clomid 50mg (30 count)","price":60,"tag":"Member","format":"Pills / Capsules"},{"category":"Private Catalog","name":"Turinabol 10mg (30 count)","price":80,"tag":"Member","format":"Pills / Capsules"},{"category":"Private Catalog","name":"Nolvadex 20mg (30 count)","price":75,"tag":"Member","format":"Pills / Capsules"},{"category":"Performance Research","name":"T3 (30 count)","price":65,"tag":"Research","format":"Pills / Capsules"},{"category":"Metabolic Research","name":"Tirzepatide 10mg","price":60,"tag":"Catalog","format":"Freeze-Dried / Vials"},{"category":"Metabolic Research","name":"Tirzepatide 20mg","price":120,"tag":"Catalog","format":"Freeze-Dried / Vials"},{"category":"Metabolic Research","name":"Tirzepatide 39mg","price":160,"tag":"Research","format":"Freeze-Dried / Vials"},{"category":"Metabolic Research","name":"Retatrutide 10mg","price":110,"tag":"Catalog","format":"Freeze-Dried / Vials"},{"category":"Metabolic Research","name":"Retatrutide 39mg","price":220,"tag":"Research","format":"Freeze-Dried / Vials"},{"category":"Tissue Research","name":"BPC-157 10mg","price":45,"tag":"Research","format":"Freeze-Dried / Vials"},{"category":"Tissue Research","name":"TB500 5mg","price":30,"tag":"Research","format":"Freeze-Dried / Vials"},{"category":"Tissue Research","name":"TB500 10mg","price":75,"tag":"Research","format":"Freeze-Dried / Vials"},{"category":"Tissue Research","name":"GHK-Cu 50mg","price":45,"tag":"Research","format":"Freeze-Dried / Vials"},{"category":"Tissue Research","name":"Selank 5mg","price":30,"tag":"Research","format":"Freeze-Dried / Vials"},{"category":"Endocrine Research","name":"Tesamorelin 20mg","price":150,"tag":"Research","format":"Freeze-Dried / Vials"},{"category":"Endocrine Research","name":"HGH 100iu","price":250,"tag":"Research","format":"Freeze-Dried / Vials"},{"category":"Endocrine Research","name":"IGF-1 LR3 1mg","price":120,"tag":"Research","format":"Freeze-Dried / Vials"},{"category":"Endocrine Research","name":"NAD+ 500mg","price":40,"tag":"Research","format":"Freeze-Dried / Vials"},{"category":"Metabolic Research","name":"Cagrilintide 5mg","price":90,"tag":"Catalog","format":"Freeze-Dried / Vials"},{"category":"Metabolic Research","name":"Cagrilintide 10mg","price":139,"tag":"Catalog","format":"Freeze-Dried / Vials"},{"category":"General Research","name":"MOTS-c 10mg","price":50,"tag":"Research","format":"Freeze-Dried / Vials"},{"category":"General Research","name":"MOTS-c 40mg","price":90,"tag":"Research","format":"Freeze-Dried / Vials"},{"category":"General Research","name":"GLOW 70","price":120,"tag":"Research","format":"Freeze-Dried / Vials"},{"category":"General Research","name":"PT141 10mg","price":50,"tag":"Research","format":"Freeze-Dried / Vials"},{"category":"General Research","name":"DSIP 10mg","price":50,"tag":"Research","format":"Freeze-Dried / Vials"},{"category":"General Research","name":"Cerebrolysin 60mg","price":100,"tag":"Research","format":"Freeze-Dried / Vials"},{"category":"General Research","name":"Melanotan-2 10mg","price":40,"tag":"Research","format":"Freeze-Dried / Vials"},{"category":"General Research","name":"Thymosin Alpha-1 5mg","price":80,"tag":"Research","format":"Freeze-Dried / Vials"},{"category":"Supplies","name":"BAC Water 10ml","price":8,"tag":"Supply","format":"Supplies / Other"},{"category":"Private Catalog","name":"GW501516 30 count","price":60,"tag":"Member","format":"Pills / Capsules"},{"category":"Metabolic Research","name":"SLU-PP-332 + BAM15 Blend 500mg (30 caps)","price":80,"tag":"Research","format":"Pills / Capsules"},{"category":"Metabolic Research","name":"Tesofensine 500mcg (30 caps)","price":50,"tag":"Research","format":"Pills / Capsules"},{"category":"Metabolic Research","name":"Orforglipron 6mg (30 tabs)","price":140,"tag":"Research","format":"Pills / Capsules"},{"category":"Private Catalog","name":"BPC-157 / TB500 1000mcg (30 count)","price":75,"tag":"Member","format":"Pills / Capsules"},{"category":"Repair & Tissue Research","name":"KPV 10mg","price":40,"tag":"Research","format":"Freeze-Dried / Vials"},{"category":"Metabolic Research","name":"SLU-PP-332 20mg (30 pills)","price":150,"tag":"Research","format":"Pills / Capsules"},{"category":"Private Catalog","name":"LGD-4033 10mg (30 count)","price":50,"tag":"Member","format":"Pills / Capsules"},{"category":"Private Catalog","name":"Viagra 100mg (30 count)","price":60,"tag":"Member","format":"Pills / Capsules"},{"category":"Private Catalog","name":"Cialis 20mg (30 count)","price":60,"tag":"Member","format":"Pills / Capsules"},{"category":"Private Catalog","name":"ED Blend 70mg (Sildenafil + Tadalafil) (30 count)","price":60,"tag":"Member","format":"Pills / Capsules"},{"category":"Private Catalog","name":"Test Cyp","price":60,"tag":"Member","format":"Freeze-Dried / Vials"},{"category":"Private Catalog","name":"Test E","price":60,"tag":"Member","format":"Freeze-Dried / Vials"},{"category":"Private Catalog","name":"Primo 100mg","price":120,"tag":"Member","format":"Freeze-Dried / Vials"},{"category":"Private Catalog","name":"NPP","price":60,"tag":"Member","format":"Freeze-Dried / Vials"},{"category":"Private Catalog","name":"Sust 250","price":70,"tag":"Member","format":"Freeze-Dried / Vials"},{"category":"Private Catalog","name":"Anavar 50mg (30 count)","price":100,"tag":"Member","format":"Pills / Capsules"},{"category":"Private Catalog","name":"RAD140 10mg (20 count)","price":60,"tag":"Member","format":"Pills / Capsules"},{"category":"Private Catalog","name":"Winstrol 20mg (30 count)","price":50,"tag":"Member","format":"Pills / Capsules"},{"category":"Private Catalog","name":"YK-11 10mg (30 count)","price":80,"tag":"Member","format":"Pills / Capsules"},{"category":"Private Catalog","name":"Dapoxetine 30mg (30 count)","price":30,"tag":"Member","format":"Pills / Capsules"},{"category":"Laboratory Supplies","name":"Peptide Pen","price":40,"tag":"Supply","format":"Supplies / Other"}];
@@ -855,7 +855,7 @@ let cart = savedCart.map(item => {
   return { ...product, qty };
 }).filter(Boolean);
 
-localStorage.setItem('reforgeCart', JSON.stringify(cart));
+persistCart();
 
 function getProductSubtotal(){
   return cart.reduce((sum,item)=>sum+item.price*item.qty,0);
@@ -869,9 +869,6 @@ function updateDeliveryFields(){
   const needsShipping = deliveryMethod.value === 'shipping';
   shippingAddressFields.hidden = !needsShipping;
   shippingInputs.forEach(field=>field.required=needsShipping);
-  if(!needsShipping){
-    ['streetAddress','addressLine2','city','state','zipCode'].forEach(id=>document.getElementById(id).value='');
-  }
   renderCart();
 }
 deliveryMethod.addEventListener('change', updateDeliveryFields);
@@ -915,7 +912,10 @@ function addToCart(name){
   showToast(p.name + ' added');
 }
 document.querySelectorAll('.add-button').forEach(b=>b.addEventListener('click',()=>addToCart(b.dataset.name)));
-function saveCart(){localStorage.setItem('reforgeCart',JSON.stringify(cart));renderCart();}
+function persistCart(){
+  try{localStorage.setItem('reforgeCart',JSON.stringify(cart));}catch(error){console.warn('Cart storage unavailable',error);}
+}
+function saveCart(){persistCart();renderCart();}
 function renderCart(){
   const itemCount=cart.reduce((s,i)=>s+i.qty,0);
   cartCount.textContent=itemCount;
@@ -933,11 +933,35 @@ function renderCart(){
   shippingEl.textContent=shipping===0 && deliveryMethod.value==='shipping' && cart.length ? 'FREE' : money(shipping);
   totalEl.textContent=money(subtotal+shipping);
 }
-function openDrawer(){drawer.classList.add('open');overlay.classList.add('open');drawer.setAttribute('aria-hidden','false')}
-function closeDrawer(){drawer.classList.remove('open');overlay.classList.remove('open');drawer.setAttribute('aria-hidden','true')}
+let invoiceOpener;
+function openDrawer(){
+  invoiceOpener=document.activeElement;
+  drawer.inert=false;
+  drawer.classList.add('open');
+  overlay.classList.add('open');
+  drawer.setAttribute('aria-hidden','false');
+  document.getElementById('closeInquiry').focus();
+}
+function closeDrawer(){
+  invoiceOpener?.focus();
+  drawer.classList.remove('open');
+  overlay.classList.remove('open');
+  drawer.inert=true;
+  drawer.setAttribute('aria-hidden','true');
+}
+drawer.addEventListener('keydown',event=>{
+  if(event.key==='Escape') closeDrawer();
+});
+function findInCatalog(query){
+  searchInput.value=query;
+  categoryFilter.value='all';
+  filterProducts();
+  document.querySelector('[data-page-target="catalog"]').click();
+  searchInput.focus({preventScroll:true});
+}
 document.getElementById('openInquiry').addEventListener('click',openDrawer);
 document.getElementById('mobileInquiry').addEventListener('click',openDrawer);
-document.querySelectorAll('[data-find]').forEach(button=>button.addEventListener('click',()=>{searchInput.value=button.dataset.find;categoryFilter.value='all';filterProducts();document.getElementById('catalog').scrollIntoView({behavior:'smooth'});}));
+document.querySelectorAll('[data-find]').forEach(button=>button.addEventListener('click',()=>{findInCatalog(button.dataset.find);}));
 document.querySelectorAll('[data-open-inquiry]').forEach(button=>button.addEventListener('click',openDrawer));
 document.getElementById('closeInquiry').addEventListener('click',closeDrawer);
 overlay.addEventListener('click',closeDrawer);
@@ -1022,7 +1046,6 @@ function renderCheckout(order, automatic){
   const checkoutView=document.getElementById('checkoutView');
   invoiceView.classList.add('hidden');
   checkoutView.classList.add('active');
-  const paymentReady=!CHECKOUT_CONFIG.venmo.startsWith('YOUR_')&&!CHECKOUT_CONFIG.zelle.startsWith('YOUR_');
   checkoutView.innerHTML=`<div class="order-confirmation">
     <span class="order-badge">${automatic?'Order submitted':'Order received · email needs attention'}</span>
     <h2>Thank you, ${escapeHtml(order.customer.name.split(' ')[0]||order.customer.name)}</h2>
@@ -1047,13 +1070,17 @@ function renderCheckout(order, automatic){
   const copyButton=document.getElementById('copyOrderDetails');
   if(copyButton) copyButton.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(orderText(order));copyButton.textContent='Copied';}catch(error){copyButton.textContent='Use Print / save receipt';}});
   document.getElementById('printReceipt').addEventListener('click',()=>window.print());
-  document.getElementById('continueShopping').addEventListener('click',()=>{cart=[];saveCart();document.getElementById('inquiryForm').reset();deliveryMethod.value='shipping';updateDeliveryFields();checkoutView.innerHTML='';checkoutView.classList.remove('active');invoiceView.classList.remove('hidden');closeDrawer();});
+  document.getElementById('continueShopping').addEventListener('click',()=>{document.getElementById('inquiryForm').reset();updateDeliveryFields();checkoutView.innerHTML='';checkoutView.classList.remove('active');invoiceView.classList.remove('hidden');closeDrawer();});
 }
 
 document.getElementById('inquiryForm').addEventListener('submit',async e=>{
   e.preventDefault();
   if(!cart.length){alert('Add at least one product first.');return}
   const v=id=>document.getElementById(id).value.trim();
+  const requiredTextFields=['customerName',...(deliveryMethod.value==='shipping'?['streetAddress','city']:[])];
+  const blankField=requiredTextFields.find(id=>!v(id));
+  if(blankField){alert('Complete all required fields.');document.getElementById(blankField).focus();return;}
+  if(v('customerPhone').replace(/\D/g,'').length!==10){alert('Enter a 10-digit phone number.');customerPhone.focus();return;}
   if(!document.getElementById('researchAttestation').checked){alert('Please confirm the research-use acknowledgement.');return}
   if(!v('customerEmail')){alert('Enter an email address so the order can have a receipt destination.');document.getElementById('customerEmail').focus();return}
   if(deliveryMethod.value==='shipping' && !/^\d{5}(?:-\d{4})?$/.test(v('zipCode'))){alert('Enter a valid 5-digit ZIP code.');document.getElementById('zipCode').focus();return}
@@ -1069,7 +1096,7 @@ document.getElementById('inquiryForm').addEventListener('submit',async e=>{
     subtotal,shipping,total:subtotal+shipping,
     referral:v('referral'),notes:v('orderNotes'),researchUseConfirmed:true
   };
-  localStorage.setItem('reforgeLastOrder',JSON.stringify(order));
+  try{localStorage.setItem('reforgeLastOrder',JSON.stringify(order));}catch(error){console.warn('Order storage unavailable',error);}
   const submitButton=e.currentTarget.querySelector('button[type="submit"]');
   const originalButtonText=submitButton.textContent;
   submitButton.disabled=true;
@@ -1077,9 +1104,12 @@ document.getElementById('inquiryForm').addEventListener('submit',async e=>{
   try{
     const result=await notifyCheckout(order);
     renderCheckout(order,result.automatic);
+    cart=[];
+    saveCart();
   }catch(err){
     console.error('Automatic checkout error',err);
     alert(err.message || 'Automatic order submission is temporarily unavailable. Your invoice is saved on this device.');
+  }finally{
     submitButton.disabled=false;
     submitButton.textContent=originalButtonText;
   }
@@ -1157,7 +1187,7 @@ document.querySelectorAll('[data-research-target]').forEach(btn=>btn.addEventLis
   });
 }));
 document.querySelectorAll('[data-shop-target]').forEach(btn=>btn.addEventListener('click',()=>{
-  searchInput.value=btn.dataset.shopTarget;categoryFilter.value='all';filterProducts();document.getElementById('catalog').scrollIntoView({behavior:'smooth'});
+  findInCatalog(btn.dataset.shopTarget);
 }));
 </script>
 <script>
