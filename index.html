@@ -579,12 +579,12 @@ body :is(.pill,.chip,.featured-link,.mobile-inquiry,.public-menu-toggle,
 #catalog .card .product-details:not(:has(> .research-link)) > .coa-link {grid-row:5;}
 #catalog .card .vial-photo figcaption {padding-block:0;}
 
-#catalog .product-grid {grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));}
-#catalog .card:has(> .product-details) {grid-template-columns:minmax(0,41%) minmax(0,1fr);}
-#catalog .card .vial-photo img {width:min(100%,clamp(92px,16vh,146px));}
-@media(max-width:560px) {
-  #catalog .product-grid {grid-template-columns:repeat(2,minmax(0,1fr));}
-  #catalog .card:has(> .product-details) {grid-template-columns:minmax(0,1fr);}
+#catalog .card .vial-photo:not(:hover) img {
+  transform:scale(1.2);
+  transform-origin:center center;
+}
+@media (hover:none), (pointer:coarse) {
+  #catalog .card .vial-photo img {transform:scale(1.2);transform-origin:center center;}
 }
 </style></head>
 <body>
