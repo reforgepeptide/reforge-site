@@ -645,6 +645,36 @@ body :is(.pill,.chip,.featured-link,.mobile-inquiry,.public-menu-toggle,
 #catalog .card .product-details :is(.research-link,.coa-link):is(:hover,:focus-visible) {
   background:#263b67;color:#fff;
 }
+
+/* Navy panels and controls on white pages */
+:is(.public-order-help,.buyer-callout,.compliance-banner,.about-card,
+    .notice-card,.research-disclaimer,.research-card,.research-category-tile,
+    .standards-grid article,.value-strip article,.feature-strip div,.coa-card,
+    details,.cart-item,.address-fields,.attestation,.member-login-card,.eligibility-panel),
+#memberModal .member-login-card {
+  background:#10234f;color:#fff;border-color:#293d69;
+  --ink:#fff;--muted:#d6e1f7;--navy:#fff;
+}
+:is(.public-order-help,.buyer-callout,.compliance-banner,.about-card,
+    .notice-card,.research-disclaimer,.research-card,.research-category-tile,
+    .standards-grid article,.value-strip article,.feature-strip div,.coa-card,
+    details,.cart-item,.address-fields,.attestation,.member-login-card,.eligibility-panel)
+    :is(h2,h3,h4,p,span,strong,summary,label) {color:inherit;}
+#memberModal .member-login-card :is(h2,label,.close) {color:#fff;}
+#memberModal .member-login-card .login-error {color:#ffc7ce;}
+body :is(.pill.secondary,.pill.ghost,.public-menu-toggle,.chip),
+#catalog .chip:is(:hover,:focus-visible,.active),
+.nav-shell .page-tab,.nav-shell #openMemberLogin,
+#eligibilityGate .eligibility-secondary {
+  background:#10234f;color:#fff;border-color:#293d69;
+}
+.nav-shell .page-tab:is(:hover,:focus-visible,.active),
+body :is(.pill.secondary,.pill.ghost,.public-menu-toggle,.chip):is(:hover,:focus-visible),
+#catalog .chip:is(:hover,:focus-visible,.active),
+#eligibilityGate .eligibility-secondary:is(:hover,:focus-visible) {
+  background:#263b67;color:#fff;
+}
+#memberModal #memberPassword {color:#101e43;}
 </style></head>
 <body>
 <div id="eligibilityGate" role="dialog" aria-modal="true" aria-labelledby="eligibilityTitle" aria-describedby="eligibilityDescription">
