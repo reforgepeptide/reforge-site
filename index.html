@@ -307,8 +307,16 @@ html.eligibility-locked body > :not(#eligibilityGate):not(script):not(style){vis
 
 :root {--catalog-surface:linear-gradient(180deg,rgba(255,255,255,.018),transparent);}
 #catalog,.page-view > section[data-page] {background:var(--catalog-surface);}
-#memberModal {background:var(--catalog-surface),var(--paper);}
-#memberModal .member-login-card {background:var(--catalog-surface),var(--paper);}
+#memberModal {background:var(--catalog-surface),var(--paper);color:var(--ink);}
+#memberModal .member-login-card {
+  background:var(--paper);border-color:var(--line);
+  box-shadow:0 22px 56px rgba(16,35,79,.14);
+}
+#memberModal .member-login-card h2,
+#memberModal .member-login-card label,
+#memberModal .member-login-card .close {color:var(--navy);}
+#memberModal #memberPassword {background:var(--soft);color:var(--ink);border-color:var(--line);}
+#memberModal .login-error {color:#a32030;}
 
 :is(#catalog,#privateCatalog) .card:has(> .product-details) {
   display:grid;grid-template-columns:minmax(0,36%) minmax(0,1fr);
@@ -365,6 +373,23 @@ h1 span {background:none;color:#1845a1;}
 .tag,.private-badge,.order-badge {background:#e8efff;color:#143576;}
 .page-tab:hover,.page-tab.active,.chip.active,#catalog .chip:hover,#catalog .chip:focus-visible,
 :is(#catalog,#privateCatalog) .card .add-button {background:#efd489;color:#172544;border-color:#d6aa4b;}
+
+/* Clip the studio backdrop without changing the embedded product photos. */
+:is(#catalog,#privateCatalog) .vial-photo {background:transparent;}
+:is(#catalog,#privateCatalog) .vial-photo img {
+  width:min(100%,clamp(76px,13vh,118px));height:auto;aspect-ratio:1;
+  margin-inline:auto;background:transparent;box-shadow:none;
+  clip-path:polygon(30% 9%,34% 6%,44% 5%,56% 5%,66% 6%,70% 9%,
+    70% 14%,69% 15%,68% 22%,65% 24%,65% 29%,68% 32%,70% 36%,
+    70% 87%,69% 92%,66% 94%,60% 95%,40% 95%,34% 94%,31% 92%,
+    30% 87%,30% 36%,32% 32%,35% 29%,35% 24%,32% 22%,31% 15%,30% 14%);
+}
+#catalog [data-format="Pills / Capsules"] .vial-photo img {
+  clip-path:polygon(25% 13%,29% 10%,71% 10%,75% 13%,75% 32%,76% 35%,
+    75% 39%,76% 43%,77% 47%,77% 85%,75% 89%,71% 91%,29% 91%,
+    25% 89%,23% 85%,23% 47%,24% 43%,25% 39%,24% 35%,25% 32%);
+}
+:is(#catalog,#privateCatalog) .vial-photo:hover img {box-shadow:none;}
 </style></head>
 <body>
 <div id="eligibilityGate" role="dialog" aria-modal="true" aria-labelledby="eligibilityTitle" aria-describedby="eligibilityDescription">
