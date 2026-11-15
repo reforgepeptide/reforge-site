@@ -390,6 +390,22 @@ h1 span {background:none;color:#1845a1;}
     25% 89%,23% 85%,23% 47%,24% 43%,25% 39%,24% 35%,25% 32%);
 }
 :is(#catalog,#privateCatalog) .vial-photo:hover img {box-shadow:none;}
+
+/* Align product text and actions across each row. */
+:is(#catalog,#privateCatalog) .card {text-align:left;align-items:stretch;}
+:is(#catalog,#privateCatalog) .card .tag {align-self:flex-start;}
+:is(#catalog,#privateCatalog) .card .category {
+  min-block-size:2.5em;line-height:1.25;overflow-wrap:anywhere;
+}
+:is(#catalog,#privateCatalog) .card h3 {
+  min-block-size:3.69em;line-height:1.23;overflow-wrap:anywhere;
+}
+:is(#catalog,#privateCatalog) .card .price {margin:0;line-height:1.2;}
+:is(#catalog,#privateCatalog) .card .card-actions,
+#privateCatalog .card > .add-button {margin-top:auto;}
+:is(#catalog,#privateCatalog) .card .card-actions > .add-button:first-child:last-child {grid-column:1/-1;}
+:is(#catalog,#privateCatalog) .card button,
+:is(#catalog,#privateCatalog) .card .coa-link {overflow-wrap:anywhere;}
 </style></head>
 <body>
 <div id="eligibilityGate" role="dialog" aria-modal="true" aria-labelledby="eligibilityTitle" aria-describedby="eligibilityDescription">
