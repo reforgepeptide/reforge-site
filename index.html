@@ -516,6 +516,26 @@ h1 {letter-spacing:-.045em;}
 @media(min-width:721px) {
   .nav-shell .page-tabs {flex:1;justify-content:flex-end;}
 }
+
+/* Shared button typography and spacing */
+:is(.pill,.chip,.member-access-btn,.eligibility-panel button,
+    .card .add-button,.card .research-link,.card .coa-link,
+    .research-actions button,.research-actions a,.mobile-inquiry) {
+  font-family:var(--type-body);font-size:1rem;font-weight:650;
+  line-height:1.2;letter-spacing:0;min-height:42px;
+  padding:10px clamp(12px,1.15vw,20px);border-radius:999px;
+}
+#catalog .card .product-details :is(.research-link,.add-button,.coa-link) {
+  font-size:clamp(.85rem,.7rem + .3vw,1rem);font-weight:650;
+  min-height:42px;padding:8px 12px;
+}
+#catalog .card .product-details {
+  grid-template-rows:auto 2.8rem auto minmax(42px,auto) minmax(42px,auto) auto;
+}
+:is(.chip,.card .research-link,.card .coa-link,.research-actions button):is(:hover,:focus-visible) {
+  border-color:#b9872f;
+}
+#privateCatalog .card .quick-add {padding-inline:10px;}
 </style></head>
 <body>
 <div id="eligibilityGate" role="dialog" aria-modal="true" aria-labelledby="eligibilityTitle" aria-describedby="eligibilityDescription">
