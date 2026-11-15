@@ -398,7 +398,7 @@ h1 span {background:none;color:#1845a1;}
   min-block-size:2.5em;line-height:1.25;overflow-wrap:anywhere;
 }
 :is(#catalog,#privateCatalog) .card h3 {
-  min-block-size:3.69em;line-height:1.23;overflow-wrap:anywhere;
+  min-block-size:0;line-height:1.23;overflow-wrap:anywhere;
 }
 :is(#catalog,#privateCatalog) .card .price {margin:0;line-height:1.2;}
 :is(#catalog,#privateCatalog) .card .card-actions,
@@ -411,6 +411,8 @@ html,body,main.page-view,
 .page-view > section[data-page],#catalog,#memberModal,
 #memberModal .member-login-card,.nav-shell,footer {background:#fff;}
 body:before {display:none;}
+
+:is(#catalog,#privateCatalog) .card .product-details .price {margin-top:0;}
 </style></head>
 <body>
 <div id="eligibilityGate" role="dialog" aria-modal="true" aria-labelledby="eligibilityTitle" aria-describedby="eligibilityDescription">
