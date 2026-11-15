@@ -272,7 +272,7 @@ html.eligibility-locked body > :not(#eligibilityGate):not(script):not(style){vis
 
 .page-view > section.section[data-page] { padding-top: clamp(24px, 3vw, 40px); }
 
-.hero.section[data-page="home"] {grid-template-columns:minmax(0,1fr);}
+.hero.section[data-page="home"] {grid-template-columns:minmax(0,1fr);min-height:0;padding-bottom:24px;}
 
 /* Compact catalog cards */
 #catalog .product-grid,#privateCatalog .private-grid {gap:10px;}
@@ -530,7 +530,7 @@ h1 {letter-spacing:-.045em;}
   min-height:42px;padding:8px 12px;
 }
 #catalog .card .product-details {
-  grid-template-rows:auto 2.8rem auto minmax(42px,auto) minmax(42px,auto) auto;
+  grid-template-rows:auto 2.45rem auto minmax(38px,auto) auto auto;
 }
 :is(.chip,.card .research-link,.card .coa-link,.research-actions button):is(:hover,:focus-visible) {
   border-color:#b9872f;
@@ -570,6 +570,14 @@ body :is(.pill,.chip,.featured-link,.mobile-inquiry,.public-menu-toggle,
 :is(#catalog,#privateCatalog) .card .add-button,#eligibilityContinue {
   background:linear-gradient(135deg,#d2a64d,#f4dfa1);
 }
+
+:is(#catalog,#privateCatalog) .card {padding:8px;gap:6px;}
+#catalog .card .product-details {gap:4px;}
+#catalog .card .product-details :is(.research-link,.add-button,.coa-link) {
+  min-height:38px;padding-block:6px;
+}
+#catalog .card .product-details:not(:has(> .research-link)) > .coa-link {grid-row:5;}
+#catalog .card .vial-photo figcaption {padding-block:0;}
 </style></head>
 <body>
 <div id="eligibilityGate" role="dialog" aria-modal="true" aria-labelledby="eligibilityTitle" aria-describedby="eligibilityDescription">
