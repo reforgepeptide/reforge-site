@@ -232,6 +232,12 @@ main.page-view>section[data-page].page-active{display:block}
 }
 
 .catalog-category-group { margin: 0 0 1.5rem; }
+.catalog-format-section:not(.is-empty) ~ .catalog-format-section:not(.is-empty),
+.catalog-category-group:not([hidden]) ~ .catalog-category-group:not([hidden]) {
+  border-top: 1px solid color-mix(in srgb, var(--gold) 35%, transparent);
+  padding-top: 1.5rem;
+}
+
 
 </style>
 
