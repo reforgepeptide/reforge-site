@@ -304,6 +304,11 @@ html.eligibility-locked body > :not(#eligibilityGate):not(script):not(style){vis
 }
 
 #catalog .chip:hover,#catalog .chip:focus-visible{background:linear-gradient(135deg,#b9872f,#efd489);color:#080a10;border-color:transparent}
+
+:root {--catalog-surface:linear-gradient(180deg,rgba(255,255,255,.018),transparent);}
+#catalog,.page-view > section[data-page] {background:var(--catalog-surface);}
+#memberModal {background:var(--catalog-surface),var(--paper);}
+#memberModal .member-login-card {background:var(--catalog-surface),var(--paper);}
 </style></head>
 <body>
 <div id="eligibilityGate" role="dialog" aria-modal="true" aria-labelledby="eligibilityTitle" aria-describedby="eligibilityDescription">
