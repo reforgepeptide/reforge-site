@@ -269,6 +269,30 @@ main.page-view>section[data-page].page-active{display:block}
 .hero-logo-wrap {padding:0;background:#000;}
 .hero-logo-wrap img {height:auto;object-fit:contain;}
 .footer-brand img[data-logo-clone] {width:88px !important;background:#000;}
+
+/* Compact storefront layout */
+body {overflow-x:clip;}
+.nav-shell {position:sticky;top:0;padding-block:7px;}
+.section {padding-top:clamp(24px,4vw,56px);}
+.hero {min-height:0;gap:clamp(20px,4vw,52px);align-items:start;}
+.hero-brand-card {min-height:0;padding:clamp(12px,2vw,24px);}
+.hero-logo-wrap {width:min(320px,100%);margin-inline:auto;background:transparent;border:0;box-shadow:none;}
+.brand-logo img,.hero-logo-wrap img,.footer-brand img[data-logo-clone] {
+  border-radius:50%;clip-path:circle(49%);background:transparent;
+}
+#catalog .product-grid,#privateCatalog .private-grid {
+  grid-template-columns:repeat(auto-fill,minmax(min(100%,160px),1fr));gap:12px;
+}
+:is(#catalog,#privateCatalog) .card {padding:12px;border-radius:16px;gap:.45rem;}
+:is(#catalog,#privateCatalog) .card h3 {font-size:clamp(.88rem,1.15vw,1.02rem);}
+:is(#catalog,#privateCatalog) .card .price {font-size:1.35rem;}
+:is(#catalog,#privateCatalog) .card button {padding:8px;margin-top:6px;}
+@media(max-width:480px) {
+  #catalog .product-grid,#privateCatalog .private-grid {
+    grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;
+  }
+  :is(#catalog,#privateCatalog) .card {padding:8px;}
+}
 </style>
 
 <style id="eligibilityStyles">
