@@ -270,9 +270,32 @@ html.eligibility-locked body > :not(#eligibilityGate):not(script):not(style){vis
 .hero-logo-wrap {width:min(320px,100%);margin-inline:auto;padding:0;background:transparent;border:0;box-shadow:none;}
 .footer-brand img[data-logo-clone] {width:88px!important;}
 
-#catalog { padding-top: clamp(24px, 3vw, 40px); }
+.page-view > section.section[data-page] { padding-top: clamp(24px, 3vw, 40px); }
 
 .hero.section[data-page="home"] {grid-template-columns:minmax(0,1fr);}
+
+/* Compact catalog cards */
+#catalog .product-grid,#privateCatalog .private-grid {gap:10px;}
+:is(#catalog,#privateCatalog) .card {
+  min-height:0;min-width:0;padding:10px;gap:5px;
+  line-height:1.25;overflow-wrap:anywhere;
+}
+:is(#catalog,#privateCatalog) .card .vial-photo {margin:0;}
+:is(#catalog,#privateCatalog) .card .vial-photo img {
+  height:clamp(76px,13vh,118px);aspect-ratio:auto;object-fit:contain;
+}
+:is(#catalog,#privateCatalog) .card .vial-photo figcaption {padding:2px 4px;font-size:.65rem;}
+:is(#catalog,#privateCatalog) .card :is(.tag,.category) {margin:0;font-size:.64rem;letter-spacing:.035em;}
+:is(#catalog,#privateCatalog) .card .tag {padding:3px 6px;}
+:is(#catalog,#privateCatalog) .card h3 {margin:0;font-size:.94rem;line-height:1.23;}
+:is(#catalog,#privateCatalog) .card .price {font-size:1.22rem;}
+:is(#catalog,#privateCatalog) .card .card-actions {gap:5px;min-width:0;}
+:is(#catalog,#privateCatalog) .card button {
+  min-width:0;height:auto;margin:0;padding:5px 7px;
+  font-size:.75rem;line-height:1.2;white-space:normal;
+}
+#catalog .catalog-category-group {margin-bottom:12px;}
+#catalog .catalog-category-group:not([hidden]) ~ .catalog-category-group:not([hidden]) {padding-top:12px;}
 </style></head>
 <body>
 <div id="eligibilityGate" role="dialog" aria-modal="true" aria-labelledby="eligibilityTitle" aria-describedby="eligibilityDescription">
