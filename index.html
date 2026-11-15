@@ -645,6 +645,21 @@ body :is(.pill,.chip,.featured-link,.mobile-inquiry,.public-menu-toggle,
 #catalog .card .product-details :is(.research-link,.coa-link):is(:hover,:focus-visible) {
   background:#263b67;color:#fff;
 }
+
+#catalog .card .product-details :is(.research-link,.coa-link),
+#privateCatalog .card .research-link,
+#research-guide .research-actions :is(button,a),
+#test-reports .coa-card summary {
+  background:#edf3ff;color:#10234f;border:1px solid #ccd7e9;
+  border-radius:6px;font-weight:700;
+}
+#catalog .card .product-details :is(.research-link,.coa-link):is(:hover,:focus-visible),
+#privateCatalog .card .research-link:is(:hover,:focus-visible),
+#research-guide .research-actions :is(button,a):is(:hover,:focus-visible),
+#test-reports .coa-card summary:is(:hover,:focus-visible) {
+  background:#d9e5fa;color:#10234f;border-color:#a7b9dc;
+}
+#test-reports .coa-card summary {padding:8px 12px;}
 </style></head>
 <body>
 <div id="eligibilityGate" role="dialog" aria-modal="true" aria-labelledby="eligibilityTitle" aria-describedby="eligibilityDescription">
