@@ -624,10 +624,11 @@ body :is(.pill,.chip,.featured-link,.mobile-inquiry,.public-menu-toggle,
   #catalog .product-grid,#privateCatalog .private-grid {
     grid-template-columns:repeat(3,minmax(0,1fr));
   }
-  #catalog .product-grid {width:calc(75% + 13.5px);margin-inline:auto;}
+  #catalog .product-grid {width:calc(80% + 25.5px);margin-inline:auto;column-gap:24px;}
 }
 
-#catalog .product-grid {gap:18px;}
+#catalog .product-grid {row-gap:18px;}
+@media(max-width:900px) {#catalog .product-grid {column-gap:18px;}}
 </style></head>
 <body>
 <div id="eligibilityGate" role="dialog" aria-modal="true" aria-labelledby="eligibilityTitle" aria-describedby="eligibilityDescription">
