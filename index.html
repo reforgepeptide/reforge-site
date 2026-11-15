@@ -465,6 +465,17 @@ h1 {letter-spacing:-.045em;}
   background:var(--soft);color:var(--navy);border:1px solid var(--line);
 }
 #catalog .card .product-details .coa-link:hover {background:#dfe9fc;}
+
+#catalog .card .product-details {
+  display:grid;grid-template-rows:auto 2.8rem auto minmax(32px,auto) minmax(32px,auto) auto;
+  align-content:start;
+}
+#catalog .product-details > .category {grid-row:1;}
+#catalog .product-details > h3 {grid-row:2;height:100%;margin:0;}
+#catalog .product-details > .price {grid-row:3;}
+#catalog .product-details > .research-link {grid-row:4;}
+#catalog .product-details > .card-actions {grid-row:5;}
+#catalog .product-details > .coa-link {grid-row:6;}
 </style></head>
 <body>
 <div id="eligibilityGate" role="dialog" aria-modal="true" aria-labelledby="eligibilityTitle" aria-describedby="eligibilityDescription">
@@ -1523,5 +1534,23 @@ document.querySelectorAll('[data-shop-target]').forEach(btn=>btn.addEventListene
  open('entry');
 })();
 </script>
-<script id="coaNavigation">document.querySelectorAll('[data-coa-open]').forEach(link=>link.addEventListener('click',event=>{event.preventDefault();document.querySelector('[data-page-target="test-reports"]').click();const report=document.getElementById(link.dataset.coaOpen);report.querySelector('details').open=true;requestAnimationFrame(()=>report.scrollIntoView({behavior:'smooth',block:'start'}));}));</script></body>
+<script id="coaNavigation">document.querySelectorAll('[data-coa-open]').forEach(link=>link.addEventListener('click',event=>{event.preventDefault();document.querySelector('[data-page-target="test-reports"]').click();const report=document.getElementById(link.dataset.coaOpen);report.querySelector('details').open=true;requestAnimationFrame(()=>report.scrollIntoView({behavior:'smooth',block:'start'}));}));</script>
+<script>
+(() => {
+  const titles = [...document.querySelectorAll('#catalog .product-details > h3')];
+  function fit(title) {
+    if (!title.clientWidth) return;
+    title.style.fontSize = '';
+    let size = parseFloat(getComputedStyle(title).fontSize);
+    while (title.scrollHeight > title.clientHeight && size > 10) {
+      size -= .5;
+      title.style.fontSize = size + 'px';
+    }
+  }
+  const observer = new ResizeObserver(entries => entries.forEach(({target}) => fit(target)));
+  titles.forEach(title => observer.observe(title));
+  document.fonts.ready.then(() => titles.forEach(fit));
+})();
+</script>
+</body>
 </html>
