@@ -307,7 +307,7 @@ html.eligibility-locked body > :not(#eligibilityGate):not(script):not(style){vis
 
 :root {--catalog-surface:linear-gradient(180deg,rgba(255,255,255,.018),transparent);}
 #catalog,.page-view > section[data-page] {background:var(--catalog-surface);}
-#memberModal {background:var(--catalog-surface),var(--paper);color:var(--ink);}
+#memberModal {background:var(--catalog-surface);color:var(--ink);}
 #memberModal .member-login-card {
   background:var(--paper);border-color:var(--line);
   box-shadow:0 22px 56px rgba(16,35,79,.14);
@@ -349,7 +349,7 @@ html.eligibility-locked body > :not(#eligibilityGate):not(script):not(style){vis
 }
 
 /* Light Reforge palette */
-:root {--ink:#101e43;--navy:#10234f;--paper:#fff;--soft:#edf3ff;--muted:#495979;--line:#ccd7e9;--glass:#ffffffed;--catalog-surface:linear-gradient(180deg,#fff,#f1f5ff);}
+:root {--ink:#101e43;--navy:#10234f;--paper:#fff;--soft:#edf3ff;--muted:#495979;--line:#ccd7e9;--glass:#ffffffed;--catalog-surface:#fff;}
 body {color:var(--ink);background:#f4f7ff;}
 body:before {background-image:none;}
 .nav-shell,footer {background:#fff;color:var(--navy);border-color:var(--line);}
@@ -406,6 +406,11 @@ h1 span {background:none;color:#1845a1;}
 :is(#catalog,#privateCatalog) .card .card-actions > .add-button:first-child:last-child {grid-column:1/-1;}
 :is(#catalog,#privateCatalog) .card button,
 :is(#catalog,#privateCatalog) .card .coa-link {overflow-wrap:anywhere;}
+
+html,body,main.page-view,
+.page-view > section[data-page],#catalog,#memberModal,
+#memberModal .member-login-card,.nav-shell,footer {background:#fff;}
+body:before {display:none;}
 </style></head>
 <body>
 <div id="eligibilityGate" role="dialog" aria-modal="true" aria-labelledby="eligibilityTitle" aria-describedby="eligibilityDescription">
