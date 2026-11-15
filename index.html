@@ -619,6 +619,12 @@ body :is(.pill,.chip,.featured-link,.mobile-inquiry,.public-menu-toggle,
 #catalog .card > .product-details:has(> .research-link) > .coa-link {grid-row:5;}
 
 #catalog .price-unit {font-size:.68em;font-weight:400;white-space:nowrap;color:var(--muted);}
+
+@media(min-width:901px) {
+  #catalog .product-grid,#privateCatalog .private-grid {
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+}
 </style></head>
 <body>
 <div id="eligibilityGate" role="dialog" aria-modal="true" aria-labelledby="eligibilityTitle" aria-describedby="eligibilityDescription">
