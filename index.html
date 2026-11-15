@@ -556,6 +556,15 @@ h1 {letter-spacing:-.045em;}
   background:linear-gradient(135deg,#b9872f,#efd489);color:#080a10;
   border-color:transparent;border-radius:999px;
 }
+
+/* Use the navigation corners on remaining controls throughout the site. */
+body :is(.pill,.chip,.featured-link,.mobile-inquiry,.public-menu-toggle,
+         .eligibility-panel button,.card button,.card .coa-link,
+         .research-actions button,.research-actions a),
+#catalog .card .product-details :is(.research-link,.add-button,.coa-link),
+:is(#catalog,#privateCatalog) .card .add-button,#eligibilityContinue {
+  border-radius:6px;
+}
 </style></head>
 <body>
 <div id="eligibilityGate" role="dialog" aria-modal="true" aria-labelledby="eligibilityTitle" aria-describedby="eligibilityDescription">
