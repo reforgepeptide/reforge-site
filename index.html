@@ -490,6 +490,29 @@ h1 {letter-spacing:-.045em;}
 
 .education-heading-line {white-space:nowrap;}
 @media(max-width:480px){.education-heading-line {font-size:min(1em,8vw);}}
+
+/* Compact header navigation */
+.nav-shell {padding:8px clamp(16px,3vw,48px);gap:16px;box-shadow:0 3px 14px #10234f0d;}
+.nav-shell .brand-logo img {width:88px;height:auto;background:transparent;}
+.nav-shell .page-tabs {gap:4px;}
+.nav-shell .page-tab {
+  position:relative;padding:9px 10px;border:0;border-radius:6px;
+  background:transparent;color:var(--navy);font-size:.9rem;font-weight:650;
+}
+.nav-shell .page-tab:hover,.nav-shell .page-tab:focus-visible,.nav-shell .page-tab.active {background:var(--soft);}
+.nav-shell .page-tab.active::after {
+  content:"";position:absolute;bottom:2px;inset-inline:10px;height:2px;
+  border-radius:2px;background:#b9872f;
+}
+.nav-shell #openMemberLogin,.nav-shell #openInquiry {padding:9px 13px;font-size:.9rem;}
+.nav-shell #openMemberLogin {margin-inline-start:6px;background:#fff;border-color:var(--line);}
+.nav-shell #openInquiry {box-shadow:none;}
+.nav-shell #cartCount {margin-inline-start:4px;font-variant-numeric:tabular-nums;}
+@media(max-width:720px) {
+  .nav-shell {gap:6px;}
+  .nav-shell .brand-logo img {width:70px;}
+  .nav-shell .page-tabs {padding-top:3px;}
+}
 </style></head>
 <body>
 <div id="eligibilityGate" role="dialog" aria-modal="true" aria-labelledby="eligibilityTitle" aria-describedby="eligibilityDescription">
