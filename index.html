@@ -492,26 +492,29 @@ h1 {letter-spacing:-.045em;}
 @media(max-width:480px){.education-heading-line {font-size:min(1em,8vw);}}
 
 /* Compact header navigation */
-.nav-shell {padding:8px clamp(16px,3vw,48px);gap:16px;box-shadow:0 3px 14px #10234f0d;}
-.nav-shell .brand-logo img {width:88px;height:auto;background:transparent;}
-.nav-shell .page-tabs {gap:4px;}
+.nav-shell {padding:12px clamp(16px,3vw,48px);gap:22px;box-shadow:0 3px 14px #10234f0d;}
+.nav-shell .brand-logo img {width:170px;height:auto;background:transparent;}
+.nav-shell .page-tabs {gap:clamp(6px,1vw,16px);}
 .nav-shell .page-tab {
-  position:relative;padding:9px 10px;border:0;border-radius:6px;
-  background:transparent;color:var(--navy);font-size:.9rem;font-weight:650;
+  position:relative;padding:12px clamp(12px,1.15vw,20px);border:0;border-radius:6px;
+  background:transparent;color:var(--navy);font-size:1rem;font-weight:650;
 }
 .nav-shell .page-tab:hover,.nav-shell .page-tab:focus-visible,.nav-shell .page-tab.active {background:var(--soft);}
 .nav-shell .page-tab.active::after {
   content:"";position:absolute;bottom:2px;inset-inline:10px;height:2px;
   border-radius:2px;background:#b9872f;
 }
-.nav-shell #openMemberLogin,.nav-shell #openInquiry {padding:9px 13px;font-size:.9rem;}
+.nav-shell #openMemberLogin,.nav-shell #openInquiry {padding:12px 20px;font-size:1rem;}
 .nav-shell #openMemberLogin {margin-inline-start:6px;background:#fff;border-color:var(--line);}
 .nav-shell #openInquiry {box-shadow:none;}
 .nav-shell #cartCount {margin-inline-start:4px;font-variant-numeric:tabular-nums;}
 @media(max-width:720px) {
   .nav-shell {gap:6px;}
-  .nav-shell .brand-logo img {width:70px;}
+  .nav-shell .brand-logo img {width:142px;}
   .nav-shell .page-tabs {padding-top:3px;}
+}
+@media(min-width:721px) {
+  .nav-shell .page-tabs {flex:1;justify-content:flex-end;}
 }
 </style></head>
 <body>
