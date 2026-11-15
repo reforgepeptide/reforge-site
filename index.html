@@ -629,6 +629,22 @@ body :is(.pill,.chip,.featured-link,.mobile-inquiry,.public-menu-toggle,
 
 #catalog .product-grid {row-gap:18px;}
 @media(max-width:900px) {#catalog .product-grid {column-gap:18px;}}
+
+/* Inverted product cards */
+:is(#catalog,#privateCatalog) .card {
+  background:#10234f;color:#fff;border-color:#293d69;
+}
+:is(#catalog,#privateCatalog) .card :is(h3,.price) {color:#fff;}
+:is(#catalog,#privateCatalog) .card .category {color:#f4dfa1;}
+#catalog .card :is(.price-unit,.vial-photo figcaption) {color:#c7d4ed;}
+:is(#catalog,#privateCatalog) .card .research-link,
+#catalog .card .product-details :is(.research-link,.coa-link) {
+  background:transparent;color:#fff;
+}
+:is(#catalog,#privateCatalog) .card .research-link:is(:hover,:focus-visible),
+#catalog .card .product-details :is(.research-link,.coa-link):is(:hover,:focus-visible) {
+  background:#263b67;color:#fff;
+}
 </style></head>
 <body>
 <div id="eligibilityGate" role="dialog" aria-modal="true" aria-labelledby="eligibilityTitle" aria-describedby="eligibilityDescription">
