@@ -452,6 +452,19 @@ h1 {letter-spacing:-.045em;}
 :is(#catalog,#privateCatalog) .card .tag {display:none;}
 
 :is(#catalog,#privateCatalog) .card .price {font-weight:400;}
+
+#catalog .card .product-details {gap:5px;}
+#catalog .card .product-details > .card-actions {display:block;margin:0;}
+#catalog .card .product-details :is(.research-link,.add-button,.coa-link) {
+  display:flex;align-items:center;justify-content:center;
+  box-sizing:border-box;width:100%;min-height:32px;margin:0;
+  padding:5px 8px;border-radius:999px;
+  font:700 .75rem/1.2 var(--type-body);text-align:center;text-decoration:none;
+}
+#catalog .card .product-details .coa-link {
+  background:var(--soft);color:var(--navy);border:1px solid var(--line);
+}
+#catalog .card .product-details .coa-link:hover {background:#dfe9fc;}
 </style></head>
 <body>
 <div id="eligibilityGate" role="dialog" aria-modal="true" aria-labelledby="eligibilityTitle" aria-describedby="eligibilityDescription">
